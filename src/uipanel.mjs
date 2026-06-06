@@ -258,7 +258,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     static get floatingPanel () {
-        return game.settings.get(MODULE_ID, SETTINGS.FLOATING_UI_PANEL)
+        // For now, only support the floating panel
+        return true
+        // return game.settings.get(MODULE_ID, SETTINGS.FLOATING_UI_PANEL)
     }
 
     static get avEnabled () {

@@ -10,7 +10,7 @@ export const SETTINGS = {
     UI_BUTTON_HOVERED_COLOR: 'uiButtonHoveredColour',
     UI_BUTTON_CLICKED_COLOR: 'uiButtonClickedColour',
     UI_BACKGROUND_COLOR: 'uiBackgroundColour',
-    FLOATING_UI_PANEL: 'uiInFrame',
+    // FLOATING_UI_PANEL: 'uiInFrame',
     FLOATING_UI_PANEL_POSITION: 'uiPanelPosition',
 }
 
@@ -25,15 +25,16 @@ export function registerSettings () {
     // I have no settings menus at the moment
     // registerSettingsMenu()
 
-    game.settings.register(MODULE_ID, SETTINGS.FLOATING_UI_PANEL, {
-        name: 'GTSV.Settings.ShowUIInFloatingWindow.name',
-        hint: 'GTSV.Settings.ShowUIInFloatingWindow.hint',
-        scope: 'client',
-        config: true,
-        type: Boolean,
-        default: false,
-        requiresReload: true,
-    })
+    // docked panel is not supported, so hide the setting
+    // game.settings.register(MODULE_ID, SETTINGS.FLOATING_UI_PANEL, {
+    //     name: 'GTSV.Settings.ShowUIInFloatingWindow.name',
+    //     hint: 'GTSV.Settings.ShowUIInFloatingWindow.hint',
+    //     scope: 'client',
+    //     config: true,
+    //     type: Boolean,
+    //     default: false,
+    //     requiresReload: true,
+    // })
 
     game.settings.register(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, {
         scope: 'client',
