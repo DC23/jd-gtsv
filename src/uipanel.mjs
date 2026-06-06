@@ -7,7 +7,7 @@ import { Constants } from './constants.mjs'
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
 
 export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
-    static ID = 'jd-et-uipanel'
+    static ID = 'jd-gtsv-uipanel'
     static DEFAULT_OPTIONS = {
         tag: 'div',
         classes: ['ui-panel', 'fade-element', 'receive-pointer-events'],
