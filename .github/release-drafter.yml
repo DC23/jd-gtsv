@@ -1,0 +1,23 @@
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'roadmap'
+      - 'enhancement'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+  - title: '🧰 Maintenance'
+    labels: 
+      - 'refactoring'
+      - 'maintenance'
+  - title: '📖 Documentation'
+    labels: 
+      - 'documentation'
+template: |
+  ## What's Changed
+
+  $CHANGES
+
+target-commitish: main
