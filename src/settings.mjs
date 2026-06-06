@@ -57,8 +57,8 @@ export function registerSettings () {
     })
 
     game.settings.register(MODULE_ID, SETTINGS.UI_UNFOCUSED_OPACITY, {
-        name: 'GTSV.Settings.UIFadeOpacity.name',
-        hint: 'GTSV.Settings.UIFadeOpacity.hint',
+        name: 'GTSV.Settings.UIUnfocusedOpacity.name',
+        hint: 'GTSV.Settings.UIUnfocusedOpacity.hint',
         scope: 'client',
         config: true,
         type: new foundry.data.fields.NumberField({ min: 0.0, max: 1.0, step: 0.05 }),

@@ -16,6 +16,8 @@
     "GTSV.Settings.ShowUIInFloatingWindow.hint": "This lets you move the window around. If you close it, then the Show/Hide hotkey will bring it back again.",
     "GTSV.Settings.UIFocusOpacity.name": "UI Transparency",
     "GTSV.Settings.UIFocusOpacity.hint": "Controls the UI transparency when in use. 0 is fully hidden, and 1 is fully visible.",
+    "GTSV.Settings.UIUnfocusedOpacity.name": "UI Transparency when not in use",
+    "GTSV.Settings.UIUnfocusedOpacity.hint": "0 is fully hidden, and 1 is fully visible.",
     "GTSV.Settings.UIBackgroundColor.name": "UI Background Color",
     "GTSV.Settings.UIBackgroundColor.hint": "Used on both the docked and floating panels"
 
