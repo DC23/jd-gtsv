@@ -12,7 +12,7 @@
 
 [GTSV](https://foundryvtt.com/packages/jd-gtsv) is a Foundry implementation of [Ginger Tea Solo Variations](https://github.com/DC23/rpg-oracle). It's a drop-in replacement for the Mythic Oracles that uses a step-dice system to handle the chaos factor and a simple d6 for the oracle.
 
-I have used the [Mythic](https://www.wordmillgames.com/mythic-gme.html) system for a long time. I love the creativity and modularity of Mythic, but sometimes I feel a little unsatisfied with the way that the chaos factor changes the likelihood of getting a yes. If the odds are "unsure (50/50)" then I expect it should always be a 50% chance of a yes regardless of the Chaos Factor. That's exactly how GTSV works. The odds of a yes (or no) are determined only by the odds you choose when asking a question. The Chaos Factor drives how frequently *twists* occur.
+I have used the [Mythic](https://www.wordmillgames.com/page/mythic-gme.html) system for a long time. I love the creativity and modularity of Mythic, but sometimes I feel a little unsatisfied with the way that the chaos factor changes the likelihood of getting a yes. If the odds are "unsure (50/50)" then I expect it should always be a 50% chance of a yes regardless of the Chaos Factor. That's exactly how GTSV works. The odds of a yes (or no) are determined only by the odds you choose when asking a question. The Chaos Factor drives how frequently *twists* occur.
 
 [Morning Coffee Solo Variations](https://aleaiactandaest.blogspot.com/p/downloads.html) (MCSV) comes very close to what I wanted. Rather than a moving chaos factor and modifiers, it has an elegant system of chaos dice. When the chaos factor changes, move the chaos die up or down a step ranging from d4 to d20. The chaotic outcomes for scene setup and Yes/No questions use fixed numbers for each result. This makes the outcomes easier to remember.
 
@@ -40,7 +40,7 @@ If you are just starting an adventure and don't know what the chaos level is, th
 
 ## Scene Setup
 
-After setting up your scene, roll the chaos die against this table to test your expectations. This table generates interrupt, altered, and unmodified scenes with comparable frequencies to the [Mythic system](https://www.wordmillgames.com/mythic-gme.html).
+After setting up your scene, roll the chaos die against this table to test your expectations. This table generates interrupt, altered, and unmodified scenes with comparable frequencies to the [Mythic system](https://www.wordmillgames.com/page/mythic-gme.html). Not identical, but close enough to replicate the feel in my games.
 
 | Chaos Die | Outcome |
 | --- | --- |
