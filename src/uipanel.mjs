@@ -10,7 +10,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static ID = 'jd-gtsv-uipanel'
     static DEFAULT_OPTIONS = {
         tag: 'div',
-        classes: ['ui-panel', 'fade-element', 'receive-pointer-events'],
+        classes: ['ui-panel', 'fade-element', 'receive-pointer-events', 'themed'],
         id: UIPanel.ID,
         window: {
             frame: false,
@@ -119,7 +119,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             template.setAttribute('id', UIPanel.ID)
             top.insertAdjacentElement('beforebegin', template)
         } else {
-            console.error('JD ETime | Could not initialise UI Panel')
+            console.error('JD GTSV | Could not initialise UI Panel')
         }
     }
 
@@ -169,7 +169,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
      * Called when cosmetic settings have been changed
      */
     cosmeticSettingsChanged (render = true) {
-        this?.element?.style.setProperty('--background-color', UIPanel.#uiBgColor)
+        // this?.element?.style.setProperty('--background-color', UIPanel.#uiBgColor)
         this?.element?.style.setProperty('--opacity-no-focus', UIPanel.#uiUnfocusedOpacity)
         this?.element?.style.setProperty('--opacity-focus', UIPanel.#uiFocusedOpacity)
         if (render) this.render()
@@ -178,12 +178,12 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     _prepareContext (options) {
         const context = {
             isGM: game.user.isGM,
-            textColor: UIPanel.#uiTextColor,
-            btn: {
-                color: UIPanel.#uiButtonColor,
-                hoverColor: UIPanel.#uiButtonHoveredColor,
-                clickColor: UIPanel.#uiButtonClickedColor,
-            },
+            // textColor: UIPanel.#uiTextColor,
+            // btn: {
+            //     color: UIPanel.#uiButtonColor,
+            //     hoverColor: UIPanel.#uiButtonHoveredColor,
+            //     clickColor: UIPanel.#uiButtonClickedColor,
+            // },
         }
 
         return context
