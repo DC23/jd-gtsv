@@ -10,7 +10,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static ID = 'jd-gtsv-uipanel'
     static DEFAULT_OPTIONS = {
         tag: 'div',
-        classes: ['ui-panel', 'fade-element', 'receive-pointer-events', 'themed'],
+        classes: ['fade-element', 'receive-pointer-events', 'themed', 'sheet'],
         id: UIPanel.ID,
         window: {
             frame: false,
@@ -68,7 +68,11 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         }
 
         const classes = UIPanel.DEFAULT_OPTIONS.classes
-        if (UIPanel.floatingPanel) classes.push('floating')
+        if (UIPanel.floatingPanel) { 
+            classes.push('floating')
+        } else {
+            classes.push('ui-panel-docked')
+        }
 
         UIPanel.checkForAVPanel()
         const uiPanel = new UIPanel({

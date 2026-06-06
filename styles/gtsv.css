@@ -130,15 +130,15 @@
 }
 
 /**
- * UI Panel specific styles
+ * Docked panel specific styles
  */
-.ui-panel {
+.ui-panel-docked {
   /* Set the left and right margins to align with the player panel */
-  margin-left: 10px;
+  /* margin-left: 5px; */
 
   /* A bit of space between us and the player panel */
   margin-bottom: 6px;
-  padding: 0.2em;
+  padding: 0.4em;
 
   background: var(--background-color);
 
