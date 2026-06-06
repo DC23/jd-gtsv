@@ -10,4 +10,67 @@
 <!-- [![Release Drafter](https://github.com/DC23/jd-gtsv/actions/workflows/release-drafter.yml/badge.svg)](https://github.com/DC23/jd-gtsv/actions/workflows/release-drafter.yml)
 [![Release Creation](https://github.com/DC23/jd-gtsv/actions/workflows/release-creation.yml/badge.svg)](https://github.com/DC23/jd-gtsv/actions/workflows/release-creation.yml) -->
 
-[GTSV](https://foundryvtt.com/packages/jd-gtsv) is a Foundry implementation of [Ginger Tea Solo Variations](https://github.com/DC23/rpg-oracle). It's a drop-in replacement for the Mythic Oracles that uses a step-dice system to handle the chaos factor. Scene expectations are tested just as with Mythic, and you ask yes/no questions of the GTSV oracle. The chances of scene alterations or interupts are very close to Mythic Second Edition for most chaos factors. The primary difference with the Ginger Tea system is that the chances of getting a yes does not change with the chaos factor. The chance of a *twist* increases with increasing chaos, but only the player selected question odds influences the chance of a yes.
+[GTSV](https://foundryvtt.com/packages/jd-gtsv) is a Foundry implementation of [Ginger Tea Solo Variations](https://github.com/DC23/rpg-oracle). It's a drop-in replacement for the Mythic Oracles that uses a step-dice system to handle the chaos factor and a simple d6 for the oracle.
+
+I have used the [Mythic](https://www.wordmillgames.com/mythic-gme.html) system for a long time. I love the creativity and modularity of Mythic, but sometimes I feel a little unsatisfied with the way that the chaos factor changes the likelihood of getting a yes. If the odds are "unsure (50/50)" then I expect it should always be a 50% chance of a yes regardless of the Chaos Factor. That's exactly how GTSV works. The odds of a yes (or no) are determined only by the odds you choose when asking a question. The Chaos Factor drives how frequently *twists* occur.
+
+[Morning Coffee Solo Variations](https://aleaiactandaest.blogspot.com/p/downloads.html) (MCSV) comes very close to what I wanted. Rather than a moving chaos factor and modifiers, it has an elegant system of chaos dice. When the chaos factor changes, move the chaos die up or down a step ranging from d4 to d20. The chaotic outcomes for scene setup and Yes/No questions use fixed numbers for each result. This makes the outcomes easier to remember.
+
+However, in the original MCSV, modifiers or complications occur far too frequently for my preference. In my testing, they occurred at almost twice the rate of comparable outcomes in Mythic Second Edition. In GTSV, I've adjusted the outcome rates so that scene events and oracle twists occur at comparable rates for the chaos factors that have Mythic analogs.
+
+In the spirit of Morning Coffee Solo Variations, I have called this mashup the *Ginger Tea Solo Variations* (GTSV), since I was drinking ginger tea at least some of the time while working on it.
+
+## Chaos Factor
+
+High chaos is represented by a smaller chaos die. Low chaos by a larger die. When changing the Chaos Factor, the die is moved one step at a time.
+
+The chaos factor influences the likelihood of scenes running as planned, as well as the likelihood of twists (modifiers and random events on Yes/No questions). Unlike Mythic, it does not change the likelihood of getting a yes or a no when asking an oracle question.
+
+If you are just starting an adventure and don't know what the chaos level is, then *Average (d10)* or *Out of Control (d8)* are good choices. The likelihood of a twist is similar to Mythic at chaos levels 4 and 5 respectively.
+
+| Chaos Factor | Chaos Die |
+| --- | --- |
+| Boring | d20 |
+| Under Control | d12 |
+| Average | d10 |
+| Out of Control | d8 |
+| Madness | d6 |
+| Abject Chaos | d5 |
+| Plaything of the Gods | d4 |
+
+## Scene Setup
+
+After setting up your scene, roll the chaos die against this table to test your expectations. This table generates interrupt, altered, and unmodified scenes with comparable frequencies to the [Mythic system](https://www.wordmillgames.com/mythic-gme.html).
+
+| Chaos Die | Outcome |
+| --- | --- |
+| 1–2 | Interrupt |
+| 3–4 | Altered |
+| 5+ | As expected |
+
+## Oracle
+
+The Yes/No oracle is used to answer questions about your RPG world, the characters, and events within it. Unlike Mythic, the odds of yes or no are not altered by the chaos factor.
+
+Rolling a 1 or a 2 on the chaos die adds a twist to the oracle answer. You can interpret that twist however you like. If you call it *Extreme*, you will get results very close to the Mythic system. Or, you can split the twists in two as suggested in the twists table. It's up to you.
+
+### Outcome (1d6)
+
+| Odds | Yes if Oracle die rolls |
+| --- | --- |
+| Certain | 2+ *(roll 2d6, discard the lowest before checking for twists)* |
+| Very likely | 2+ |
+| Likely | 3+ |
+| Unsure | 4+ |
+| Unlikely | 5+ |
+| Very unlikely | 6 |
+| Impossible | 6 *(roll 2d6, discard the highest before checking for twists)* |
+
+#### Twists
+
+| Chaos die | Result |
+| --- | --- |
+| 1 | And… / Extreme |
+| 2 | But… / Extreme |
+| 3+ | No twist |
+| Oracle and Chaos die match | Random event |
