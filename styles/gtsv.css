@@ -1,0 +1,415 @@
+.grid-two-by-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 7px;
+  margin-bottom: 7px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+}
+
+.checkbox-item input {
+  margin-right: 10px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-inline label {
+  display: inline-block;
+  align-items: center;
+  margin: 5px 10px 5px 0;
+}
+
+.form-row {
+  margin: 5px;
+}
+
+.margin-top {
+  margin-top: 5px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.receive-pointer-events {
+  pointer-events: initial;
+}
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flex-group-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flexshrink {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0 1;
+}
+
+.flex-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.flexlarge {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+.flex-align-center {
+  align-self: center;
+}
+
+.align-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.align-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.align-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.etk-dialog {
+  padding: 0;
+}
+
+/**
+ * UI Panel specific styles
+ */
+.ui-panel {
+  /* Set the left and right margins to align with the player panel */
+  margin-left: 15px;
+  /* margin-right: 5px; */
+
+  /* A bit of space between us and the player panel */
+  margin-bottom: 6px;
+  border: 1px solid black;
+  padding: 0.2em;
+
+  background: var(--background-color);
+
+  display: flex;
+  justify-content: center;
+  flex:0 3;
+  width: 200px;
+}
+
+/* Fix window & scheme color */
+.ui-panel.floating {
+  /* background: var(--background-color); */
+  background: black;
+  padding: 0.1em;
+  margin: 0;
+}
+
+[id^=jd-et-uipanel] .window-header {
+  /* background: var(--background-color); */
+  background: black;
+  border: 0px;
+}
+
+[id^=jd-et-uipanel] .window-content {
+  background: var(--background-color);
+  padding: 0.5rem; /*  It inherits 1rem, but it's too much. */ 
+}
+
+/*End*/
+
+
+/**
+ * Element fade when hovered/focused
+ */
+.fade-element {
+  opacity: var(--opacity-focus);
+  transition: opacity 0.5s ease-in-out;
+}
+
+/**
+ * Element fade when not hovered/focused
+ */
+.fade-element:not(:hover) {
+  opacity: var(--opacity-no-focus);
+}
+
+/**
+ * The GM buttons for time control
+ */
+.time-button-container {
+  i {
+    color: var(--color);
+  }
+
+  i:hover {
+    color: var(--hover-color);
+    transform: scale(1.4);
+    /* box-shadow: 0 0 4px rgba(35, 234, 0, 0.941); */
+  }
+
+  i:active {
+    color: var(--click-color);
+    transform: scale(1.4);
+  }
+}
+
+/**
+ * Display strings for time of day
+ */
+.etk-timeofday {
+  margin-bottom: 5px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/**
+ * Tooltips
+ * Usage:
+ * <span class="hovertext" data-hover="this is the tooltip">
+ */
+.hovertext {
+  position: relative;
+}
+
+.hovertext:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  bottom: 1.2em;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/**
+ * Styles grafted from Global Progress Clocks are below here.
+ * They control the circular clocks used to display Dragonbane time.
+ */
+
+.etk-clock-panel .etk-clock-entry {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  height: 44px;
+  border-radius: 5px 22px 22px 5px;
+  border-right: none;
+
+  /* Add a little space in between the clocks */
+  margin-right: 1px;
+  margin-left: 1px;
+
+  &.hidden {
+    display: none;
+  }
+
+  .etk-name-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4px 2px 8px;
+    overflow-y: hidden;
+
+    .name {
+      align-items: center;
+      cursor: initial;
+      display: flex;
+      justify-content: end;
+    }
+  }
+
+  .etk-clock {
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+
+    --spoke-width: 2px;
+
+    align-self: center;
+    aspect-ratio: 1 / 1;
+
+    --filled-ratio: calc(var(--filled) / var(--areas) * 1turn);
+    background: conic-gradient(var(--clock-color) var(--filled-ratio), var(--background) var(--filled-ratio) 1turn);
+    border-radius: 50%;
+    border: var(--spoke-color) var(--spoke-width) solid;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+
+    position: relative;
+
+    .etk-spoke {
+      width: var(--spoke-width);
+
+      /* Make the spokes slightly larger than the inner radius so they overlay half the outer border, preventing subpixel gaps */
+      height: calc(50% + .5 * var(--spoke-width));
+
+      top: calc(-.5 * var(--spoke-width));
+      right: calc(50% - var(--spoke-width) / 2);
+
+      background: var(--spoke-color);
+      position: absolute;
+
+      transform-origin: center bottom;
+      transform: rotate(calc((var(--index) * 1turn) / var(--areas)));
+    }
+  }
+}
+
+/**
+* Analogue clock styles
+*/
+
+/* The defaults to the classic 10:10 position, and indicate the variables exposed via the HBS template to the JS logic. */
+.clock {
+  --size:              200px;
+  --hour-rotation:     305deg;
+  --minute-rotation:   60deg;
+  --dial-color:        rgba(245, 245, 245, 1);
+  --dial-outline-color:  rgba(0, 0, 0, 0.15);
+  --dial-drop-shadow-color: rgba(0, 0, 0, 0.18);
+  --hour-hand-color:   rgb(238, 200, 80);
+  --minute-hand-color: rgb(238, 200, 80);
+  --tick-color:        rgba(0, 0, 0, 0.5);
+  --dial-image:        none;
+}
+ 
+/* Clock face */
+.clock {
+  position: relative;
+  width:  var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  /* background-color: var(--dial-color); */
+  background: var(--dial-image) center/cover no-repeat,
+              var(--dial-color);
+  box-shadow:
+    0 0 0 3px var(--dial-outline-color),   /* thin rim */
+    0 5px 16px var(--dial-drop-shadow-color);  /* soft drop shadow */
+  box-sizing: border-box;
+}
+ 
+/* 12 o'clock tick (top), used as reference marker */
+.clock::before {
+  content: "";
+  position: absolute;
+  top:   calc(var(--size) * 0.04);
+  left:  50%;
+  transform: translateX(-50%);
+  width:  2px;
+  height: calc(var(--size) * 0.05);
+  border-radius: 1px;
+  background-color: var(--tick-color);
+}
+ 
+/* Centre pivot */
+.clock::after {
+  content: "";
+  position: absolute;
+  top:  50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:  8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+ 
+/* Shared hand styles */
+.clock__hand {
+  position: absolute;
+  bottom:   50%;          /* hands grow upward from the centre */
+  left:     50%;
+  transform-origin: bottom center;
+  border-radius: 2px 2px 0 0;
+}
+ 
+/* Hour hand */
+.clock__hand--hour {
+  width:  5px;
+  height: calc(var(--size) * 0.275);
+  margin-left: -2.5px;   /* centre on the pivot (half of width) */
+  background-color: var(--hour-hand-color);
+  transform: rotate(var(--hour-rotation));
+  z-index: 3;
+}
+ 
+/* Minute hand */
+.clock__hand--minute {
+  width:  3px;
+  height: calc(var(--size) * 0.375);
+  margin-left: -1.5px;   /* centre on the pivot (half of width) */
+  background-color: var(--minute-hand-color);
+  transform: rotate(var(--minute-rotation));
+  z-index: 2;
+}
