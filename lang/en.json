@@ -1,0 +1,22 @@
+{
+    "GTSV.NoPermission": "Easy Timekeeping: You do not have permission to call this function.",
+    "GTSV.showHideUI": "Show or hide the User Interface",
+    "GTSV.title": "Easy Timekeeping",
+    "GTSV.AVDockWarning": "Foundry Audio/Video detected. Switching to the floating panel to avoid conflicts with the A/V interface.",
+
+    "GTSV.Settings.UITextColor.name": "UI Text Color",
+    "GTSV.Settings.UITextColor.hint": "Used for the time and fuzzy time strings",
+    "GTSV.Settings.UIButtonColor.name": "Time Step Button Color",
+    "GTSV.Settings.UIButtonColor.hint": "",
+    "GTSV.Settings.UIButtonHoveredColor.name": "Time Step Button Color When Hovered",
+    "GTSV.Settings.UIButtonHoveredColor.hint": "",
+    "GTSV.Settings.UIButtonClickedColor.name": "Time Step Button Color When Clicked",
+    "GTSV.Settings.UIButtonClickedColor.hint": "",
+    "GTSV.Settings.ShowUIInFloatingWindow.name": "Show UI as a Floating Window",
+    "GTSV.Settings.ShowUIInFloatingWindow.hint": "This lets you move the window around. If you close it, then the Show/Hide hotkey will bring it back again.",
+    "GTSV.Settings.UIFocusOpacity.name": "UI Transparency",
+    "GTSV.Settings.UIFocusOpacity.hint": "Controls the UI transparency when in use. 0 is fully hidden, and 1 is fully visible.",
+    "GTSV.Settings.UIBackgroundColor.name": "UI Background Color",
+    "GTSV.Settings.UIBackgroundColor.hint": "Used on both the docked and floating panels"
+
+    }
