@@ -1,0 +1,21 @@
+{
+  "id": "ginger-tea-solo-variations",
+  "title": "Ginger Tea Solo Variations",
+  "version": "0.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "description": "<p>A step-dice solo oracle that's a drop-in replacement for the Mythic GME.</p>",
+  "authors": [
+    {
+      "name": "JugglinDan",
+      "discord": "JugglinDan",
+      "flags": {}
+    }
+  ],
+  "flags": {
+    "canUpload": true
+  },
+  "action": "manageModule"
+}
