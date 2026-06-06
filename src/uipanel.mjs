@@ -169,7 +169,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
      * Called when cosmetic settings have been changed
      */
     cosmeticSettingsChanged (render = true) {
-        // this?.element?.style.setProperty('--background-color', UIPanel.#uiBgColor)
+        // TODO: I'd rather use the default Foundry light and dark themes
+        this?.element?.style.setProperty('--background-color', UIPanel.#uiBgColor)
         this?.element?.style.setProperty('--opacity-no-focus', UIPanel.#uiUnfocusedOpacity)
         this?.element?.style.setProperty('--opacity-focus', UIPanel.#uiFocusedOpacity)
         if (render) this.render()
