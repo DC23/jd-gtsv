@@ -157,9 +157,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _onRender (context, options) {
-        this.element
-            .querySelector('select[name="chaos-factor"]')
-            .addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))
+        const select = this.element.querySelector('select[name="chaos-factor"]')
+        select.value = context.chaosFactors.selected
+        select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))
     }
 
     _onClose () {
