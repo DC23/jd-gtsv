@@ -68,7 +68,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         }
 
         const classes = UIPanel.DEFAULT_OPTIONS.classes
-        if (UIPanel.floatingPanel) { 
+        if (UIPanel.floatingPanel) {
             classes.push('floating')
         } else {
             classes.push('ui-panel-docked')
