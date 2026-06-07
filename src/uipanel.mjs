@@ -10,10 +10,10 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static ID = 'jd-gtsv-uipanel'
     static DEFAULT_OPTIONS = {
         tag: 'div',
-        classes: ['faded-ui', 'receive-pointer-events', 'themed', 'sheet', 'floating'],
+        classes: ['faded-ui', 'receive-pointer-events', 'themed'],
         id: UIPanel.ID,
         window: {
-            frame: false,
+            frame: true,
             title: 'GTSV.title',
             icon: 'fa-solid fa-clock',
             resizable: true,
@@ -57,7 +57,6 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         }
 
         const uiPanel = new UIPanel({
-            window: { frame: true },
             position: position,
             classes: UIPanel.DEFAULT_OPTIONS.classes,
         })

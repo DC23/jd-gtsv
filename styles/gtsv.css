@@ -8,32 +8,10 @@
 .button-container select {
   min-width: 0;
 }
-/** end */
 
 .receive-pointer-events {
   pointer-events: initial;
 }
-
-/* Fix window & scheme color */
-/* Do I still need this at all? */
-.ui-panel.floating {
-  padding: 0.1em;
-  margin: 0;
-  border: 0px;
-}
-
-/* Do I still need this at all? */
-[id^=jd-gtsv-uipanel] .window-header {
-  border: 0px;
-}
-
-/* Do I still need this at all? */
-[id^=jd-gtsv-uipanel] .window-content {
-  padding: 0.5rem;
-  /*  It inherits 1rem, but it's too much. */
-}
-
-/*End*/
 
 /**
  * Fancy buttons
@@ -47,7 +25,6 @@
     text-shadow: 0 0 8px currentColor;
   }
 }
-
 
 /**
  * Tooltips
