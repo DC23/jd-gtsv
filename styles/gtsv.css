@@ -14,22 +14,6 @@
   pointer-events: initial;
 }
 
-/* replace with Foundry default */
-.flexshrink {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0 1;
-}
-
-/* replace with Foundry default */
-.flex-align-center {
-  align-self: center;
-}
-
-.hidden {
-  display: none;
-}
-
 /* Fix window & scheme color */
 /* Do I still need this at all? */
 .ui-panel.floating {
