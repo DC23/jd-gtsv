@@ -14,7 +14,7 @@ export function registerSettings () {
     // registerSettingsMenu()
 
     game.settings.register(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR, {
-        scope: 'client',
+        scope: 'world',
         config: false,
         type: String,
         default: Constants.CHAOS_FACTORS[2].die,
@@ -22,7 +22,7 @@ export function registerSettings () {
     })
 
     game.settings.register(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, {
-        scope: 'client',
+        scope: 'world',
         config: false,
         type: foundry.applications.types.ApplicationPosition,
         default: { top: 100, left: 150 },
