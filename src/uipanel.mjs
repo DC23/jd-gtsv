@@ -18,7 +18,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             icon: 'fa-solid fa-clock',
             resizable: true,
             height: 'auto',
-            width: 'auto',
+            width: '250',
         },
         actions: {
             'chaos-step': UIPanel.chaosStepHandler,
@@ -43,8 +43,6 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const position = game.settings.get(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION)
 
         if (position) {
-            if (position.width === 'auto') position.width = '250'
-
             // if position if out of bounds for current client view,
             // reset to a safe location in the top left
             if (
