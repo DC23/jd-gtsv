@@ -10,13 +10,13 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static ID = 'jd-gtsv-uipanel'
     static DEFAULT_OPTIONS = {
         tag: 'div',
-        classes: ['fade-element', 'receive-pointer-events', 'themed', 'sheet', 'floating'],
+        classes: ['faded-ui', 'receive-pointer-events', 'themed', 'sheet', 'floating'],
         id: UIPanel.ID,
         window: {
             frame: false,
             title: 'GTSV.title',
             icon: 'fa-solid fa-clock',
-            resizable: true, 
+            resizable: true,
             height: 'auto',
             width: 'auto',
         },
@@ -81,17 +81,12 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         })
     }
 
-    ready () {
-    }
-
-    _onFirstRender (context, options) {
-        this.cosmeticSettingsChanged(false)
-    }
+    ready () {}
 
     _onRender (context, options) {
         const select = this.element.querySelector('select[name="chaos-factor"]') // Get the chaos factor select element
         select.value = context.chaosFactors.selected // set the selected element based on the current chaos factor
-        select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))  // listen for changes
+        select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this)) // listen for changes
     }
 
     _onClose () {
@@ -102,12 +97,6 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     setPosition (pos) {
         super.setPosition(pos)
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
-    }
-
-    cosmeticSettingsChanged (render = true) {
-        this?.element?.style.setProperty('--opacity-no-focus', UIPanel.#uiUnfocusedOpacity)
-        this?.element?.style.setProperty('--opacity-focus', UIPanel.#uiFocusedOpacity)
-        if (render) this.render()
     }
 
     _prepareContext (options) {
@@ -181,15 +170,5 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static set #chaosFactor (value) {
         game.settings.set(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR, value)
         console.log('Chaos factor changed to', value)
-    }
-
-    static get #uiFocusedOpacity () {
-        if (UIPanel.#hidden) return 0
-        return game.settings.get(MODULE_ID, SETTINGS.UI_FOCUSED_OPACITY)
-    }
-
-    static get #uiUnfocusedOpacity () {
-        if (UIPanel.#hidden) return 0
-        return game.settings.get(MODULE_ID, SETTINGS.UI_UNFOCUSED_OPACITY)
     }
 }
