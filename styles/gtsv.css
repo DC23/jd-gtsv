@@ -48,6 +48,10 @@
   margin-top: 5px;
 }
 
+.button-container select {
+  min-width: 0;
+}
+
 .receive-pointer-events {
   pointer-events: initial;
 }
