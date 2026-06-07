@@ -136,9 +136,12 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
         const outcome = Constants.SCENE_OUTCOMES.find(o => roll.total <= o.maxRoll).key
 
-        const flavor = await renderTemplate(`modules/${MODULE_ID}/templates/scene-setup-chat.hbs`, {
-            outcome,
-        })
+        const flavor = await foundry.applications.handlebars.renderTemplate(
+            `modules/${MODULE_ID}/templates/scene-setup-chat.hbs`,
+            {
+                outcome,
+            }
+        )
 
         await roll.toMessage({
             flavor,
