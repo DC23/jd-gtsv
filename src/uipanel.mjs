@@ -22,6 +22,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         actions: {
             // 'chaos-factor-changed': UIPanel.chaosFactorChangedHandler,
+            'chaos-step': UIPanel.chaosStepHandler,
         },
     }
 
@@ -205,6 +206,16 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static chaosFactorChangedHandler (event) {
         console.log('Chaos factor changed to', event.target.value)
         UIPanel.#chaosFactor = event.target.value
+    }
+
+    static chaosStepHandler (event, target) {
+        const direction = target.dataset.direction === 'up' ? 1 : -1
+        const index = Constants.CHAOS_FACTORS.findIndex(f => f.die === UIPanel.#chaosFactor)
+        const next = index + direction
+        if (next >= 0 && next < Constants.CHAOS_FACTORS.length) {
+            UIPanel.#chaosFactor = Constants.CHAOS_FACTORS[next].die
+            this.element.querySelector('select[name="chaos-factor"]').value = UIPanel.#chaosFactor
+        }
     }
 
     async toggleHidden () {

@@ -27,5 +27,8 @@
     "GTSV.Chaos.OutOfControl": "Out of Control",
     "GTSV.Chaos.Madness": "Madness",
     "GTSV.Chaos.AbjectChaos": "Abject Chaos",
-    "GTSV.Chaos.PlaythingOfTheGods": "Plaything of the Gods"
+    "GTSV.Chaos.PlaythingOfTheGods": "Plaything of the Gods",
+
+    "GTSV.ChaosDown": "Move Chaos Down One Step",
+    "GTSV.ChaosUp": "Move Chaos Up One Step"
     }
