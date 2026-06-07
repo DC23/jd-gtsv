@@ -10,18 +10,17 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static ID = 'jd-gtsv-uipanel'
     static DEFAULT_OPTIONS = {
         tag: 'div',
-        classes: ['fade-element', 'receive-pointer-events', 'themed', 'sheet'],
+        classes: ['fade-element', 'receive-pointer-events', 'themed', 'sheet', 'floating'],
         id: UIPanel.ID,
         window: {
             frame: false,
             title: 'GTSV.title',
             icon: 'fa-solid fa-clock',
-            resizable: true, // only applies on the undocked UI
+            resizable: true, 
             height: 'auto',
             width: 'auto',
         },
         actions: {
-            // 'chaos-factor-changed': UIPanel.chaosFactorChangedHandler,
             'chaos-step': UIPanel.chaosStepHandler,
         },
     }
@@ -33,8 +32,6 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     static #hidden = false
-    #avDockWhenSettingsOpen = null
-    #time = null
     refresh = foundry.utils.debounce(this.render, 100)
 
     /**
@@ -46,13 +43,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const position = game.settings.get(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION)
 
         if (position) {
-            // for the floating panel, reset the auto width so it can resize manually
-            if (UIPanel.floatingPanel) {
-                if (position.width === 'auto') position.width = '220'
-            } else {
-                // when docked, restore auto width
-                position.width = 'auto'
-            }
+            if (position.width === 'auto') position.width = '220'
 
             // if position if out of bounds for current client view,
             // reset to a safe location in the top left
@@ -65,33 +56,14 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
 
-        const classes = UIPanel.DEFAULT_OPTIONS.classes
-        if (UIPanel.floatingPanel) {
-            classes.push('floating')
-        } else {
-            classes.push('ui-panel-docked')
-        }
-
-        UIPanel.checkForAVPanel()
         const uiPanel = new UIPanel({
-            window: { frame: UIPanel.floatingPanel },
+            window: { frame: true },
             position: position,
-            classes: classes,
+            classes: UIPanel.DEFAULT_OPTIONS.classes,
         })
 
         uiPanel.ready()
         return uiPanel
-    }
-
-    ready () {
-        Hooks.on('renderAVConfig', this.renderAVConfigHandler.bind(this))
-        Hooks.on('closeAVConfig', this.closeAVConfigHandler.bind(this))
-        // game.socket.on(`module.${MODULE_ID}`, time => {
-        //     this.#time = time
-        //     this.render()
-        // })
-
-        if (!UIPanel.floatingPanel) this.#insertAppElement('#players')
     }
 
     static registerKeybindings () {
@@ -109,48 +81,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         })
     }
 
-    #insertAppElement (target) {
-        /**
-         * This creates a DOM element in the ui-left interface div,
-         * in between the canvas controls and the players panel.
-         * Technique from Global Progress Clocks.
-         * */
-        const top = document.querySelector(target)
-        if (top) {
-            const template = document.createElement('template')
-            template.setAttribute('id', UIPanel.ID)
-            top.insertAdjacentElement('beforebegin', template)
-        } else {
-            console.error('JD GTSV | Could not initialise UI Panel')
-        }
-    }
-
-    renderAVConfigHandler () {
-        this.#avDockWhenSettingsOpen = game.webrtc.settings.client.dockPosition
-    }
-
-    closeAVConfigHandler () {
-        /**
-         * if the AV dock position has changed, we need to force a Foundry reload
-         * since Foundry is currently inconsistent in when this occurs.
-         *
-         * Note that game.webrtc.settings.world.mode > 0 indicates that A/V chat is enabled.
-         * I might be able to use that to automatically switch to a floating UI
-         */
-
-        const after = game.webrtc.settings.client.dockPosition
-        if (this.#avDockWhenSettingsOpen != after) SettingsConfig.reloadConfirm({ world: true })
-    }
-
-    static checkForAVPanel () {
-        if (UIPanel.avEnabled && !UIPanel.floatingPanel) {
-            // This is a pathological layout situation: the AV dock disrupts the docked UI
-            // I could only do the check for the left & right dock settings, but it's safer to use all.
-            // Also, this bug was actually fixed in PR #254, but I needed a commit to get a PR for this bug fix
-            // so the release notes workflow will pick this up. Weird.
-            ui.notifications.warn(game.i18n.localize('GTSV.AVDockWarning'))
-            game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL, true)
-        }
+    ready () {
     }
 
     _onFirstRender (context, options) {
@@ -285,15 +216,5 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     static get #uiUnfocusedOpacity () {
         if (UIPanel.#hidden) return 0
         return game.settings.get(MODULE_ID, SETTINGS.UI_UNFOCUSED_OPACITY)
-    }
-
-    static get floatingPanel () {
-        // For now, only support the floating panel
-        return true
-        // return game.settings.get(MODULE_ID, SETTINGS.FLOATING_UI_PANEL)
-    }
-
-    static get avEnabled () {
-        return game.webrtc.settings.world.mode > 0
     }
 }
