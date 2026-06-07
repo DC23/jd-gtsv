@@ -15,7 +15,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             frame: true,
             title: 'GTSV.title',
-            icon: 'fa-solid fa-clock',
+            icon: 'fa-solid fa-dice',
             resizable: true,
             height: 'auto',
             width: '250',
