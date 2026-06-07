@@ -243,3 +243,9 @@
   opacity: 1;
   visibility: visible;
 }
+
+.hovertext.hovertext-flip:before {
+  left: unset;
+  right: 0;
+}
+
