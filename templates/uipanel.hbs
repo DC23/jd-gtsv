@@ -1,6 +1,10 @@
 {{log this}}
 <div class="standard-form flexcol">
-    <label>Chaos Factor</label> <select><option>Low</option><option>Medium</option><option>High</option></select>
+    <select name="chaos-factor" data-action="chaos-factor-changed">
+        {{#each chaosFactors.choices}}
+        <option value="{{this.value}}">{{localize this.key}} ({{this.value}})</option>
+        {{/each}}
+    </select>
     <button>Test Scene</button>
     <button>Ask the Oracle</button>
 </div>

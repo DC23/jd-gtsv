@@ -179,7 +179,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     _prepareContext (options) {
         const context = {
-            isGM: game.user.isGM,
+            chaosFactors: {
+                choices: Constants.CHAOS_FACTORS,
+            },
             // textColor: UIPanel.#uiTextColor,
             // btn: {
             //     color: UIPanel.#uiButtonColor,
@@ -193,11 +195,11 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     /** Action Handlers */
 
-     /**
+    /**
      * @param {PointerEvent} event - The originating click event
      * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
      */
-    static chaosFactorChangedHandler(event, target) {
+    static chaosFactorChangedHandler (event, target) {
         console.log('Chaos factor changed to', target.value)
     }
 
