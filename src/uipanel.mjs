@@ -21,7 +21,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             width: 'auto',
         },
         actions: {
-            'chaos-factor-changed': UIPanel.chaosFactorChangedHandler,
+            // 'chaos-factor-changed': UIPanel.chaosFactorChangedHandler,
         },
     }
 
@@ -156,6 +156,12 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         this.cosmeticSettingsChanged(false)
     }
 
+    _onRender (context, options) {
+        this.element
+            .querySelector('select[name="chaos-factor"]')
+            .addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))
+    }
+
     _onClose () {
         UIPanel.#hidden = true
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
@@ -195,12 +201,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     /** Action Handlers */
 
-    /**
-     * @param {PointerEvent} event - The originating click event
-     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
-     */
-    static chaosFactorChangedHandler (event, target) {
-        console.log('Chaos factor changed to', target.value)
+    static chaosFactorChangedHandler (event) {
+        console.log('Chaos factor changed to', event.target.value)
     }
 
     async toggleHidden () {
