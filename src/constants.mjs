@@ -8,6 +8,12 @@ import { MODULE_ID, SETTINGS } from './settings.mjs'
  * @public
  */
 export class Constants {
+    static SCENE_OUTCOMES = [
+        { maxRoll: 2, key: 'GTSV.Scene.Interrupt' },
+        { maxRoll: 4, key: 'GTSV.Scene.Altered' },
+        { maxRoll: Infinity, key: 'GTSV.Scene.AsExpected' },
+    ]
+
     static CHAOS_FACTORS = [
         { key: 'GTSV.Chaos.Boring', die: 'd20' },
         { key: 'GTSV.Chaos.UnderControl', die: 'd12' },

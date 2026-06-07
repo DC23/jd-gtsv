@@ -62,3 +62,8 @@
   left: unset;
   right: 0;
 }
+
+.gtsv-notable-outcome {
+  font-weight: 700;
+  font-size: 1.1em;
+}

@@ -22,6 +22,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         actions: {
             'chaos-step': UIPanel.chaosStepHandler,
+            'test-scene': UIPanel.testSceneHandler,
         },
     }
 
@@ -127,6 +128,24 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             UIPanel.#chaosFactor = Constants.CHAOS_FACTORS[next].die
             this.element.querySelector('select[name="chaos-factor"]').value = UIPanel.#chaosFactor
         }
+    }
+
+    static async testSceneHandler (event, target) {
+        const roll = new Roll(UIPanel.#chaosFactor)
+        await roll.evaluate()
+
+        const outcome = Constants.SCENE_OUTCOMES.find(o => roll.total <= o.maxRoll).key
+        const outcomeClass = roll.total <= 4 ? 'gtsv-notable-outcome' : ''
+
+        const flavor = await foundry.applications.handlebars.renderTemplate(
+            `modules/${MODULE_ID}/templates/scene-setup-chat.hbs`,
+            { outcome, outcomeClass }
+        )
+
+        await roll.toMessage({
+            flavor,
+            rollMode: game.settings.get('core', 'rollMode'),
+        })
     }
 
     async toggleHidden () {
