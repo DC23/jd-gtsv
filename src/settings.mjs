@@ -12,6 +12,7 @@ export const SETTINGS = {
     UI_BACKGROUND_COLOR: 'uiBackgroundColour',
     // FLOATING_UI_PANEL: 'uiInFrame',
     FLOATING_UI_PANEL_POSITION: 'uiPanelPosition',
+    CURRENT_CHAOS_FACTOR: 'currentChaosFactor',
 }
 
 const GM_ONLY_SETTINGS = [
@@ -35,6 +36,14 @@ export function registerSettings () {
     //     default: false,
     //     requiresReload: true,
     // })
+
+    game.settings.register(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR, {
+        scope: 'client',
+        config: false,
+        type: String,
+        default: Constants.CHAOS_FACTORS[2].die,
+        requiresReload: false,
+    })
 
     game.settings.register(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, {
         scope: 'client',

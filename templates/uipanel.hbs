@@ -1,6 +1,6 @@
 {{log this}}
 <div class="standard-form flexcol">
-    <select name="chaos-factor">
+    <select name="chaos-factor" selected="{{chaosFactors.selected}}">
         {{#each chaosFactors.choices}}
         <option value="{{this.die}}">{{localize this.key}} ({{this.die}})</option>
         {{/each}}

@@ -187,6 +187,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const context = {
             chaosFactors: {
                 choices: Constants.CHAOS_FACTORS,
+                selected: UIPanel.#chaosFactor,
             },
             // textColor: UIPanel.#uiTextColor,
             // btn: {
@@ -203,6 +204,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static chaosFactorChangedHandler (event) {
         console.log('Chaos factor changed to', event.target.value)
+        UIPanel.#chaosFactor = event.target.value
     }
 
     async toggleHidden () {
@@ -234,6 +236,14 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static async toggleHidden () {
         await game.modules.get(MODULE_ID).uiPanel.toggleHidden()
+    }
+
+    static get #chaosFactor () {
+        return game.settings.get(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR)
+    }
+
+    static set #chaosFactor (value) {
+        game.settings.set(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR, value)
     }
 
     static get #uiBgColor () {
