@@ -2,22 +2,13 @@ import { Constants } from './constants.mjs'
 
 export const MODULE_ID = 'jd-gtsv'
 export const SETTINGS = {
-    UI_TEXT_COLOR: 'uiTextColor',
-    UI_FOCUS_OPACITY: 'uiFocusOpacity',
     UI_UNFOCUSED_OPACITY: 'uiFadeOpacity',
     UI_FOCUSED_OPACITY: 'uiFocusedOpacity',
-    UI_BUTTON_COLOR: 'uiButtonColour',
-    UI_BUTTON_HOVERED_COLOR: 'uiButtonHoveredColour',
-    UI_BUTTON_CLICKED_COLOR: 'uiButtonClickedColour',
-    UI_BACKGROUND_COLOR: 'uiBackgroundColour',
     FLOATING_UI_PANEL_POSITION: 'uiPanelPosition',
     CURRENT_CHAOS_FACTOR: 'currentChaosFactor',
 }
 
 const GM_ONLY_SETTINGS = [
-    // SETTINGS.UI_BUTTON_COLOR,
-    // SETTINGS.UI_BUTTON_HOVERED_COLOR,
-    // SETTINGS.UI_BUTTON_CLICKED_COLOR,
 ]
 
 export function registerSettings () {
@@ -61,72 +52,6 @@ export function registerSettings () {
         config: true,
         type: new foundry.data.fields.NumberField({ min: 0.0, max: 1.0, step: 0.05 }),
         default: 0.7,
-        requiresReload: false,
-        onChange: () => {
-            game.modules.get(MODULE_ID).uiPanel?.cosmeticSettingsChanged()
-        },
-    })
-
-    game.settings.register(MODULE_ID, SETTINGS.UI_BACKGROUND_COLOR, {
-        name: 'GTSV.Settings.UIBackgroundColor.name',
-        hint: 'GTSV.Settings.UIBackgroundColor.hint',
-        scope: 'client',
-        config: true,
-        type: new foundry.data.fields.ColorField(),
-        default: '#000000',
-        requiresReload: false,
-        onChange: () => {
-            game.modules.get(MODULE_ID).uiPanel?.cosmeticSettingsChanged()
-        },
-    })
-
-    game.settings.register(MODULE_ID, SETTINGS.UI_TEXT_COLOR, {
-        name: 'GTSV.Settings.UITextColor.name',
-        hint: 'GTSV.Settings.UITextColor.hint',
-        scope: 'client',
-        config: true,
-        type: new foundry.data.fields.ColorField(),
-        default: '#ffffff',
-        // default: '#1ab6ea',
-        requiresReload: false,
-        onChange: () => {
-            game.modules.get(MODULE_ID).uiPanel?.cosmeticSettingsChanged()
-        },
-    })
-
-    game.settings.register(MODULE_ID, SETTINGS.UI_BUTTON_COLOR, {
-        name: 'GTSV.Settings.UIButtonColor.name',
-        hint: 'GTSV.Settings.UIButtonColor.hint',
-        scope: 'client',
-        config: true,
-        type: new foundry.data.fields.ColorField(),
-        default: '#ffffff',
-        requiresReload: false,
-        onChange: () => {
-            game.modules.get(MODULE_ID).uiPanel?.cosmeticSettingsChanged()
-        },
-    })
-
-    game.settings.register(MODULE_ID, SETTINGS.UI_BUTTON_HOVERED_COLOR, {
-        name: 'GTSV.Settings.UIButtonHoveredColor.name',
-        hint: 'GTSV.Settings.UIButtonHoveredColor.hint',
-        scope: 'client',
-        config: true,
-        type: new foundry.data.fields.ColorField(),
-        default: '#138b37',
-        requiresReload: false,
-        onChange: () => {
-            game.modules.get(MODULE_ID).uiPanel?.cosmeticSettingsChanged()
-        },
-    })
-
-    game.settings.register(MODULE_ID, SETTINGS.UI_BUTTON_CLICKED_COLOR, {
-        name: 'GTSV.Settings.UIButtonClickedColor.name',
-        hint: 'GTSV.Settings.UIButtonClickedColor.hint',
-        scope: 'client',
-        config: true,
-        type: new foundry.data.fields.ColorField(),
-        default: '#25e45e',
         requiresReload: false,
         onChange: () => {
             game.modules.get(MODULE_ID).uiPanel?.cosmeticSettingsChanged()

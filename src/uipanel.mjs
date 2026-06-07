@@ -43,7 +43,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const position = game.settings.get(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION)
 
         if (position) {
-            if (position.width === 'auto') position.width = '220'
+            if (position.width === 'auto') position.width = '250'
 
             // if position if out of bounds for current client view,
             // reset to a safe location in the top left
@@ -89,9 +89,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _onRender (context, options) {
-        const select = this.element.querySelector('select[name="chaos-factor"]')
-        select.value = context.chaosFactors.selected
-        select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))
+        const select = this.element.querySelector('select[name="chaos-factor"]') // Get the chaos factor select element
+        select.value = context.chaosFactors.selected // set the selected element based on the current chaos factor
+        select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))  // listen for changes
     }
 
     _onClose () {
@@ -104,12 +104,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
     }
 
-    /**
-     * Called when cosmetic settings have been changed
-     */
     cosmeticSettingsChanged (render = true) {
-        // TODO: I'd rather use the default Foundry light and dark themes
-        this?.element?.style.setProperty('--background-color', UIPanel.#uiBgColor)
         this?.element?.style.setProperty('--opacity-no-focus', UIPanel.#uiUnfocusedOpacity)
         this?.element?.style.setProperty('--opacity-focus', UIPanel.#uiFocusedOpacity)
         if (render) this.render()
@@ -135,7 +130,6 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     /** Action Handlers */
 
     static chaosFactorChangedHandler (event) {
-        console.log('Chaos factor changed to', event.target.value)
         UIPanel.#chaosFactor = event.target.value
     }
 
@@ -186,26 +180,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static set #chaosFactor (value) {
         game.settings.set(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR, value)
-    }
-
-    static get #uiBgColor () {
-        return game.settings.get(MODULE_ID, SETTINGS.UI_BACKGROUND_COLOR)
-    }
-
-    static get #uiTextColor () {
-        return game.settings.get(MODULE_ID, SETTINGS.UI_TEXT_COLOR)
-    }
-
-    static get #uiButtonColor () {
-        return game.settings.get(MODULE_ID, SETTINGS.UI_BUTTON_COLOR)
-    }
-
-    static get #uiButtonHoveredColor () {
-        return game.settings.get(MODULE_ID, SETTINGS.UI_BUTTON_HOVERED_COLOR)
-    }
-
-    static get #uiButtonClickedColor () {
-        return game.settings.get(MODULE_ID, SETTINGS.UI_BUTTON_CLICKED_COLOR)
+        console.log('Chaos factor changed to', value)
     }
 
     static get #uiFocusedOpacity () {
