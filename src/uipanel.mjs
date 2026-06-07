@@ -21,10 +21,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             width: 'auto',
         },
         actions: {
-            // 'time-delta': UIPanel.timeDeltaButtonHandler,
-            // 'set-time': UIPanel.setTimeButtonHandler,
-            // 'reset-time': UIPanel.resetTimeButtonHandler,
-            // 'tell-time': UIPanel.tellTime,
+            // 'chaos-factor-changed': UIPanel.chaosFactorChangedHandler,
+            'chaos-step': UIPanel.chaosStepHandler,
         },
     }
 
@@ -68,7 +66,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         }
 
         const classes = UIPanel.DEFAULT_OPTIONS.classes
-        if (UIPanel.floatingPanel) { 
+        if (UIPanel.floatingPanel) {
             classes.push('floating')
         } else {
             classes.push('ui-panel-docked')
@@ -159,6 +157,12 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         this.cosmeticSettingsChanged(false)
     }
 
+    _onRender (context, options) {
+        const select = this.element.querySelector('select[name="chaos-factor"]')
+        select.value = context.chaosFactors.selected
+        select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this))
+    }
+
     _onClose () {
         UIPanel.#hidden = true
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
@@ -182,7 +186,10 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     _prepareContext (options) {
         const context = {
-            isGM: game.user.isGM,
+            chaosFactors: {
+                choices: Constants.CHAOS_FACTORS,
+                selected: UIPanel.#chaosFactor,
+            },
             // textColor: UIPanel.#uiTextColor,
             // btn: {
             //     color: UIPanel.#uiButtonColor,
@@ -195,6 +202,21 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     /** Action Handlers */
+
+    static chaosFactorChangedHandler (event) {
+        console.log('Chaos factor changed to', event.target.value)
+        UIPanel.#chaosFactor = event.target.value
+    }
+
+    static chaosStepHandler (event, target) {
+        const direction = target.dataset.direction === 'up' ? 1 : -1
+        const index = Constants.CHAOS_FACTORS.findIndex(f => f.die === UIPanel.#chaosFactor)
+        const next = index + direction
+        if (next >= 0 && next < Constants.CHAOS_FACTORS.length) {
+            UIPanel.#chaosFactor = Constants.CHAOS_FACTORS[next].die
+            this.element.querySelector('select[name="chaos-factor"]').value = UIPanel.#chaosFactor
+        }
+    }
 
     async toggleHidden () {
         // If floating panel and shown, then just close
@@ -225,6 +247,14 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static async toggleHidden () {
         await game.modules.get(MODULE_ID).uiPanel.toggleHidden()
+    }
+
+    static get #chaosFactor () {
+        return game.settings.get(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR)
+    }
+
+    static set #chaosFactor (value) {
+        game.settings.set(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR, value)
     }
 
     static get #uiBgColor () {

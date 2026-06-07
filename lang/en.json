@@ -19,6 +19,16 @@
     "GTSV.Settings.UIUnfocusedOpacity.name": "UI Transparency when not in use",
     "GTSV.Settings.UIUnfocusedOpacity.hint": "0 is fully hidden, and 1 is fully visible.",
     "GTSV.Settings.UIBackgroundColor.name": "UI Background Color",
-    "GTSV.Settings.UIBackgroundColor.hint": "Used on both the docked and floating panels"
+    "GTSV.Settings.UIBackgroundColor.hint": "Used on both the docked and floating panels",
 
+    "GTSV.Chaos.Boring": "Boring",
+    "GTSV.Chaos.UnderControl": "Under Control",
+    "GTSV.Chaos.Average": "Average",
+    "GTSV.Chaos.OutOfControl": "Out of Control",
+    "GTSV.Chaos.Madness": "Madness",
+    "GTSV.Chaos.AbjectChaos": "Abject Chaos",
+    "GTSV.Chaos.PlaythingOfTheGods": "Plaything of the Gods",
+
+    "GTSV.ChaosDown": "Move Chaos Down One Step",
+    "GTSV.ChaosUp": "Move Chaos Up One Step"
     }

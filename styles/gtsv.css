@@ -48,6 +48,10 @@
   margin-top: 5px;
 }
 
+.button-container select {
+  min-width: 0;
+}
+
 .receive-pointer-events {
   pointer-events: initial;
 }
@@ -145,7 +149,7 @@
   border: 1px;
   display: flex;
   justify-content: center;
-  flex:0 3;
+  flex: 0 3;
   width: 200px;
 }
 
@@ -166,7 +170,8 @@
 
 [id^=jd-gtsv-uipanel] .window-content {
   /* background: var(--background-color); */
-  padding: 0.5rem; /*  It inherits 1rem, but it's too much. */ 
+  padding: 0.5rem;
+  /*  It inherits 1rem, but it's too much. */
 }
 
 /*End*/
@@ -188,23 +193,19 @@
 }
 
 /**
- * The GM buttons for time control
+ * Fancy buttons
  */
-.time-button-container {
-  i {
-    color: var(--color);
-  }
+.fancy-buttons {
 
   i:hover {
-    color: var(--hover-color);
     transform: scale(1.4);
-    /* box-shadow: 0 0 4px rgba(35, 234, 0, 0.941); */
   }
 
   i:active {
-    color: var(--click-color);
-    transform: scale(1.4);
+    transform: scale(0.9);
+    text-shadow: 0 0 8px currentColor;
   }
+
 }
 
 
@@ -238,4 +239,9 @@
 .hovertext:hover:before {
   opacity: 1;
   visibility: visible;
+}
+
+.hovertext.hovertext-flip:before {
+  left: unset;
+  right: 0;
 }
