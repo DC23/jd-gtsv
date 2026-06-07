@@ -21,10 +21,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             width: 'auto',
         },
         actions: {
-            // 'time-delta': UIPanel.timeDeltaButtonHandler,
-            // 'set-time': UIPanel.setTimeButtonHandler,
-            // 'reset-time': UIPanel.resetTimeButtonHandler,
-            // 'tell-time': UIPanel.tellTime,
+            'chaos-factor-changed': UIPanel.chaosFactorChangedHandler,
         },
     }
 
@@ -195,6 +192,14 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     /** Action Handlers */
+
+     /**
+     * @param {PointerEvent} event - The originating click event
+     * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
+     */
+    static chaosFactorChangedHandler(event, target) {
+        console.log('Chaos factor changed to', target.value)
+    }
 
     async toggleHidden () {
         // If floating panel and shown, then just close
