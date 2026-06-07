@@ -2,22 +2,6 @@
     "GTSV.NoPermission": "GTSV: You do not have permission to call this function.",
     "GTSV.showHideUI": "Show or hide the User Interface",
     "GTSV.title": "GTSV Oracle",
-
-    "GTSV.Settings.UITextColor.name": "UI Text Color",
-    "GTSV.Settings.UITextColor.hint": "",
-    "GTSV.Settings.UIButtonColor.name": "UI Button Color",
-    "GTSV.Settings.UIButtonColor.hint": "",
-    "GTSV.Settings.UIButtonHoveredColor.name": "Button Color When Hovered",
-    "GTSV.Settings.UIButtonHoveredColor.hint": "",
-    "GTSV.Settings.UIButtonClickedColor.name": "Button Color When Clicked",
-    "GTSV.Settings.UIButtonClickedColor.hint": "",
-    "GTSV.Settings.UIFocusOpacity.name": "UI Transparency",
-    "GTSV.Settings.UIFocusOpacity.hint": "Controls the UI transparency when in use. 0 is fully hidden, and 1 is fully visible.",
-    "GTSV.Settings.UIUnfocusedOpacity.name": "UI Transparency when not in use",
-    "GTSV.Settings.UIUnfocusedOpacity.hint": "0 is fully hidden, and 1 is fully visible.",
-    "GTSV.Settings.UIBackgroundColor.name": "UI Background Color",
-    "GTSV.Settings.UIBackgroundColor.hint": "Used on both the docked and floating panels",
-
     "GTSV.Chaos.Boring": "Boring",
     "GTSV.Chaos.UnderControl": "Under Control",
     "GTSV.Chaos.Average": "Average",
@@ -25,7 +9,6 @@
     "GTSV.Chaos.Madness": "Madness",
     "GTSV.Chaos.AbjectChaos": "Abject Chaos",
     "GTSV.Chaos.PlaythingOfTheGods": "Plaything of the Gods",
-
     "GTSV.ChaosDown": "Move Chaos Down One Step",
     "GTSV.ChaosUp": "Move Chaos Up One Step"
-    }
+}
