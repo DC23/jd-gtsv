@@ -15,5 +15,22 @@
     "GTSV.SceneSetup": "Scene Setup",
     "GTSV.Scene.Interrupt": "Interrupt",
     "GTSV.Scene.Altered": "Altered",
-    "GTSV.Scene.AsExpected": "As Expected"
+    "GTSV.Scene.AsExpected": "As Expected",
+    "GTSV.Oracle.Title": "Ask the Oracle",
+    "GTSV.Oracle.AskOracle": "Ask the Oracle",
+    "GTSV.Oracle.QuestionLabel": "Question",
+    "GTSV.Oracle.OddsLabel": "Odds",
+    "GTSV.Oracle.ChaosLabel": "Chaos Factor",
+    "GTSV.Oracle.Yes": "Yes",
+    "GTSV.Oracle.No": "No",
+    "GTSV.Oracle.Odds.Certain": "Certain",
+    "GTSV.Oracle.Odds.VeryLikely": "Very Likely",
+    "GTSV.Oracle.Odds.Likely": "Likely",
+    "GTSV.Oracle.Odds.Unsure": "Unsure (50/50)",
+    "GTSV.Oracle.Odds.Unlikely": "Unlikely",
+    "GTSV.Oracle.Odds.VeryUnlikely": "Very Unlikely",
+    "GTSV.Oracle.Odds.Impossible": "Impossible",
+    "GTSV.Oracle.Twist.And": "And… / Extreme",
+    "GTSV.Oracle.Twist.But": "But… / Extreme",
+    "GTSV.Oracle.Twist.RandomEvent": "Random Event!"
 }
