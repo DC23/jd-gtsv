@@ -125,8 +125,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const index = Constants.CHAOS_FACTORS.findIndex(f => f.die === UIPanel.#chaosFactor)
         const next = index + direction
         if (next >= 0 && next < Constants.CHAOS_FACTORS.length) {
-            UIPanel.#chaosFactor = Constants.CHAOS_FACTORS[next].die
-            this.element.querySelector('select[name="chaos-factor"]').value = UIPanel.#chaosFactor
+            const newFactor = Constants.CHAOS_FACTORS[next].die
+            UIPanel.#chaosFactor = newFactor
+            this.element.querySelector('select[name="chaos-factor"]').value = newFactor
         }
     }
 
