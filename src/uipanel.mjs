@@ -135,12 +135,11 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         await roll.evaluate()
 
         const outcome = Constants.SCENE_OUTCOMES.find(o => roll.total <= o.maxRoll).key
+        const outcomeClass = roll.total <= 4 ? 'gtsv-notable-outcome' : ''
 
         const flavor = await foundry.applications.handlebars.renderTemplate(
             `modules/${MODULE_ID}/templates/scene-setup-chat.hbs`,
-            {
-                outcome,
-            }
+            { outcome, outcomeClass }
         )
 
         await roll.toMessage({
