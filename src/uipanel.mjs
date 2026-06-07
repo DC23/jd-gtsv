@@ -153,8 +153,6 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
                 this?.element?.classList.add('receive-pointer-events')
         }
 
-        this.cosmeticSettingsChanged(false)
-
         // refresh the UI
         await this.render(true)
     }
