@@ -33,8 +33,16 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _prepareContext (options) {
+        const rememberOdds = game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)
+        const currentOdds = rememberOdds
+            ? game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
+            : 'unsure'
+
         return {
-            odds: Constants.ORACLE_ODDS,
+            odds: {
+                choices: Constants.ORACLE_ODDS,
+                current: currentOdds,
+            },
             chaosFactors: {
                 choices: Constants.CHAOS_FACTORS,
                 current: game.settings.get(MODULE_ID, SETTINGS.CURRENT_CHAOS_FACTOR),
@@ -44,6 +52,9 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static async #onSubmit (event, form, formData) {
         const { question, oddsId, chaosDie } = formData.object
+        if (game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)) {
+            game.settings.set(MODULE_ID, SETTINGS.LAST_ODDS, oddsId)
+        }
         await OracleDialog.#rollOracle(question, oddsId, chaosDie)
     }
 
@@ -55,7 +66,11 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
         const oracleValue = roll.dice[0].total
         const chaosValue = roll.dice[1].total
-        const { isYes, isRandomEvent, twist } = determineOutcome(oracleValue, chaosValue, odds.threshold)
+        const { isYes, isRandomEvent, twist } = determineOutcome(
+            oracleValue,
+            chaosValue,
+            odds.threshold
+        )
 
         const twistClass = twist || isRandomEvent ? 'gtsv-notable-outcome' : ''
 
