@@ -1,3 +1,7 @@
+#jd-gtsv-uipanel .window-content {
+  overflow: auto;
+}
+
 /** Button container, for nice button spacing and alignment */
 .button-container {
   display: flex;
