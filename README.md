@@ -5,7 +5,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues-raw/DC23/jd-gtsv?label=Tasks&logo=GitHub)](https://github.com/DC23/jd-gtsv/issues)
 [![Tests](https://img.shields.io/github/actions/workflow/status/DC23/jd-gtsv/test.yml?label=Tests)](https://github.com/DC23/jd-gtsv/actions/workflows/test.yml)
 [![GitHub Bugs](https://img.shields.io/github/issues-raw/DC23/jd-gtsv/bug?logo=GitHub&label=Bugs&color=red)](https://github.com/DC23/jd-gtsv/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-![GitHub Total Downloads](https://img.shields.io/github/downloads/DC23/jd-gtsv/total?logo=GitHub&label=Downloads)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/DC23/jd-gtsv/total?logo=GitHub&label=Downloads&color=silver)
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/DC23/jd-gtsv/latest/total?logo=GitHub&label=Downloads%3A%20Latest)
 
 <!-- [![Release Drafter](https://github.com/DC23/jd-gtsv/actions/workflows/release-drafter.yml/badge.svg)](https://github.com/DC23/jd-gtsv/actions/workflows/release-drafter.yml)
