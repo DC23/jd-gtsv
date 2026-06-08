@@ -1,0 +1,6 @@
+<div class="gtsv-oracle">
+    {{#if question}}<p><em>{{question}}</em></p>{{/if}}
+    <p><strong>{{localize answer}}</strong></p>
+    {{#if twist}}<p class="{{twistClass}}">{{localize twist}}</p>{{/if}}
+    {{#if isRandomEvent}}<p class="gtsv-notable-outcome">{{localize 'GTSV.Oracle.Twist.RandomEvent'}}</p>{{/if}}
+</div>

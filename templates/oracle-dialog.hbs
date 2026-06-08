@@ -1,0 +1,26 @@
+<div class="standard-form flexcol">
+    <div class="form-group">
+        <label>{{localize 'GTSV.Oracle.QuestionLabel'}}</label>
+        <input type="text" name="question" placeholder="{{localize 'GTSV.Oracle.QuestionLabel'}}" />
+    </div>
+
+    <div class="form-group">
+        <label>{{localize 'GTSV.Oracle.OddsLabel'}}</label>
+        <select name="oddsId">
+            {{#each odds}}
+            <option value="{{this.id}}" {{#if (eq this.id 'unsure')}}selected{{/if}}>{{localize this.key}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize 'GTSV.Oracle.ChaosLabel'}}</label>
+        <select name="chaosDie">
+            {{#each chaosFactors.choices}}
+            <option value="{{this.die}}" {{#if (eq this.die ../chaosFactors.current)}}selected{{/if}}>{{localize this.key}} ({{this.die}})</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <button type="submit">{{localize 'GTSV.Oracle.Title'}}</button>
+</div>

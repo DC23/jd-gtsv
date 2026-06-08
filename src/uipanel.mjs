@@ -4,6 +4,7 @@
 import { MODULE_ID, SETTINGS } from './settings.mjs'
 import { Helpers } from './helpers.mjs'
 import { Constants } from './constants.mjs'
+import { OracleDialog } from './oracle.mjs'
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
 
 export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
@@ -23,6 +24,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         actions: {
             'chaos-step': UIPanel.chaosStepHandler,
             'test-scene': UIPanel.testSceneHandler,
+            'ask-oracle': UIPanel.askOracleHandler,
         },
     }
 
@@ -129,6 +131,10 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             UIPanel.#chaosFactor = newFactor
             this.element.querySelector('select[name="chaos-factor"]').value = newFactor
         }
+    }
+
+    static askOracleHandler () {
+        OracleDialog.ask()
     }
 
     static async testSceneHandler (event, target) {
