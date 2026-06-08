@@ -91,6 +91,13 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this)) // listen for changes
     }
 
+    async close (options = {}) {
+        // closeKey is set when the close is triggered by the ESC key,
+        // which is the one case we want to ignore.
+        if (options.closeKey) return this
+        return super.close(options)
+    }
+
     _onClose () {
         UIPanel.#hidden = true
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
