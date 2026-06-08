@@ -7,8 +7,9 @@
     <div class="form-group">
         <label>{{localize 'GTSV.Oracle.OddsLabel'}}</label>
         <select name="oddsId">
-            {{#each odds}}
-            <option value="{{this.id}}" {{#if (eq this.id 'unsure')}}selected{{/if}}>{{localize this.key}}</option>
+            {{#each odds.choices}}
+            <option value="{{this.id}}" {{#if (eq this.id ../odds.current)}}selected{{/if}}>{{localize this.key}}
+            </option>
             {{/each}}
         </select>
     </div>
@@ -17,7 +18,8 @@
         <label>{{localize 'GTSV.Oracle.ChaosLabel'}}</label>
         <select name="chaosDie">
             {{#each chaosFactors.choices}}
-            <option value="{{this.die}}" {{#if (eq this.die ../chaosFactors.current)}}selected{{/if}}>{{localize this.key}} ({{this.die}})</option>
+            <option value="{{this.die}}" {{#if (eq this.die ../chaosFactors.current)}}selected{{/if}}>{{localize
+                this.key}} ({{this.die}})</option>
             {{/each}}
         </select>
     </div>
