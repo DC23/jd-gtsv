@@ -1,5 +1,5 @@
 /**
- * Pure oracle logic — no Foundry dependencies, fully unit-testable.
+ * oracle logic, fully unit-testable
  */
 
 /**

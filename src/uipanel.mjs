@@ -5,6 +5,8 @@ import { MODULE_ID, SETTINGS } from './settings.mjs'
 import { Helpers } from './helpers.mjs'
 import { Constants } from './constants.mjs'
 import { OracleDialog } from './oracle.mjs'
+import { determineSceneOutcome } from './scene-logic.mjs'
+import { stepChaosFactor } from './chaos-logic.mjs'
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
 
 export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
@@ -124,12 +126,10 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static chaosStepHandler (event, target) {
         const direction = target.dataset.direction === 'up' ? 1 : -1
-        const index = Constants.CHAOS_FACTORS.findIndex(f => f.die === UIPanel.#chaosFactor)
-        const next = index + direction
-        if (next >= 0 && next < Constants.CHAOS_FACTORS.length) {
-            const newFactor = Constants.CHAOS_FACTORS[next].die
-            UIPanel.#chaosFactor = newFactor
-            this.element.querySelector('select[name="chaos-factor"]').value = newFactor
+        const newDie = stepChaosFactor(Constants.CHAOS_FACTORS, UIPanel.#chaosFactor, direction)
+        if (newDie !== null) {
+            UIPanel.#chaosFactor = newDie
+            this.element.querySelector('select[name="chaos-factor"]').value = newDie
         }
     }
 
@@ -141,8 +141,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const roll = new Roll(UIPanel.#chaosFactor)
         await roll.evaluate()
 
-        const outcome = Constants.SCENE_OUTCOMES.find(o => roll.total <= o.maxRoll).key
-        const outcomeClass = roll.total <= 4 ? 'gtsv-notable-outcome' : ''
+        const { outcome, isNotable } = determineSceneOutcome(roll.total, Constants.SCENE_OUTCOMES)
+        const outcomeClass = isNotable ? 'gtsv-notable-outcome' : ''
 
         const flavor = await foundry.applications.handlebars.renderTemplate(
             `modules/${MODULE_ID}/templates/scene-setup-chat.hbs`,
