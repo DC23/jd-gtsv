@@ -46,6 +46,16 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         await OracleDialog.#rollOracle(question, oddsId, chaosDie)
     }
 
+    static determineOutcome (oracleValue, chaosValue, threshold) {
+        return {
+            isYes: oracleValue >= threshold,
+            isRandomEvent: oracleValue === chaosValue,
+            twist: chaosValue === 1 ? 'GTSV.Oracle.Twist.And'
+                 : chaosValue === 2 ? 'GTSV.Oracle.Twist.But'
+                 : null,
+        }
+    }
+
     static async #rollOracle (question, oddsId, chaosDie) {
         const odds = Constants.ORACLE_ODDS.find(o => o.id === oddsId)
 
@@ -54,12 +64,7 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
         const oracleValue = roll.dice[0].total
         const chaosValue = roll.dice[1].total
-        const isYes = oracleValue >= odds.threshold
-        const isRandomEvent = oracleValue === chaosValue
-
-        let twist = null
-        if (chaosValue === 1) twist = 'GTSV.Oracle.Twist.And'
-        else if (chaosValue === 2) twist = 'GTSV.Oracle.Twist.But'
+        const { isYes, isRandomEvent, twist } = OracleDialog.determineOutcome(oracleValue, chaosValue, odds.threshold)
 
         const twistClass = twist || isRandomEvent ? 'gtsv-notable-outcome' : ''
 
