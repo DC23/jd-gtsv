@@ -55,10 +55,10 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         if (game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)) {
             game.settings.set(MODULE_ID, SETTINGS.LAST_ODDS, oddsId)
         }
-        await OracleDialog.#rollOracle(question, oddsId, chaosDie)
+        await OracleDialog.rollOracle(question, oddsId, chaosDie)
     }
 
-    static async #rollOracle (question, oddsId, chaosDie) {
+    static async rollOracle (question, oddsId, chaosDie) {
         const odds = Constants.ORACLE_ODDS.find(o => o.id === oddsId)
 
         const roll = new Roll(`${odds.oracleDice} + 1${chaosDie}`)
