@@ -18,6 +18,7 @@
     "GTSV.Scene.AsExpected": "As Expected",
     "GTSV.Oracle.Title": "Ask the Oracle",
     "GTSV.Oracle.AskOracle": "Ask the Oracle",
+    "GTSV.Oracle.QuickOracle": "Quick Oracle",
     "GTSV.Oracle.QuestionLabel": "Question",
     "GTSV.Oracle.OddsLabel": "Odds",
     "GTSV.Oracle.ChaosLabel": "Chaos Factor",
