@@ -67,7 +67,7 @@ Rolling a 1 or a 2 on the chaos die adds a twist to the oracle answer. You can i
 | Very unlikely | 6 |
 | Impossible | 6 *(roll 2d6, discard the highest before checking for twists)* |
 
-#### Twists
+### Twists
 
 | Chaos die | Result |
 | --- | --- |
