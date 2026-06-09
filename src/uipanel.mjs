@@ -28,6 +28,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             'test-scene': UIPanel.testSceneHandler,
             'ask-oracle': UIPanel.askOracleHandler,
             'quick-oracle': UIPanel.quickOracleHandler,
+            'odds-step': UIPanel.oddsStepHandler,
         },
     }
 
@@ -93,7 +94,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this)) // listen for changes
 
         if (!this.#oddsHookId) {
-            this.#oddsHookId = Hooks.on('clientSettingChanged', (...args) => this.#onClientSettingChanged(...args))
+            this.#oddsHookId = Hooks.on('clientSettingChanged', (...args) =>
+                this.#onClientSettingChanged(...args)
+            )
         }
     }
 
@@ -104,7 +107,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!odds) return // guard against a stale/invalid setting value
         const button = this.element?.querySelector('[data-action="quick-oracle"]')
         if (button) {
-            button.textContent = `${game.i18n.localize('GTSV.Oracle.QuickOracle')}: ${game.i18n.localize(odds.key)}`
+            button.textContent = `${game.i18n.localize(
+                'GTSV.Oracle.QuickOracle'
+            )}: ${game.i18n.localize(odds.key)}`
         }
     }
 
@@ -128,12 +133,9 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _prepareContext (options) {
-        const rememberOdds = game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)
-        const oddsId = rememberOdds
-            ? game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
-            : 'unsure'
-        const quickOracleOddsKey = Constants.ORACLE_ODDS.find(o => o.id === oddsId)?.key
-            ?? 'GTSV.Oracle.Odds.Unsure'
+        const oddsId = game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
+        const quickOracleOddsKey =
+            Constants.ORACLE_ODDS.find(o => o.id === oddsId)?.key ?? 'GTSV.Oracle.Odds.Unsure'
 
         const context = {
             chaosFactors: {
@@ -172,11 +174,24 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     static async quickOracleHandler () {
-        const rememberOdds = game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)
-        const oddsId = rememberOdds
-            ? game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
-            : 'unsure'
-        await OracleDialog.rollOracle(null, oddsId, UIPanel.#chaosFactor)
+        await OracleDialog.rollOracle(
+            null,
+            game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS),
+            UIPanel.#chaosFactor
+        )
+    }
+
+    static oddsStepHandler (event, target) {
+        const direction = target.dataset.direction === 'up' ? -1 : 1
+        const currentId = game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
+        const currentIndex = Constants.ORACLE_ODDS.findIndex(o => o.id === currentId)
+        const newIndex = Math.max(
+            0,
+            Math.min(Constants.ORACLE_ODDS.length - 1, currentIndex + direction)
+        )
+        if (newIndex !== currentIndex) {
+            game.settings.set(MODULE_ID, SETTINGS.LAST_ODDS, Constants.ORACLE_ODDS[newIndex].id)
+        }
     }
 
     static async testSceneHandler (event, target) {
