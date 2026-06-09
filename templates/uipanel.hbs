@@ -19,5 +19,14 @@
 
     <button data-action="test-scene">{{localize 'GTSV.TestScene'}}</button>
     <button data-action="ask-oracle">{{localize 'GTSV.Oracle.AskOracle'}}</button>
-    <button data-action="quick-oracle">{{localize 'GTSV.Oracle.QuickOracle'}}: {{localize quickOracleOddsKey}}</button>
+    <div class="button-container flexrow fancy-buttons">
+        <span class="hovertext noflex" data-hover="{{localize 'GTSV.Oracle.OddsDown'}}">
+            <i data-action="odds-step" data-direction="down" class="fa-solid fa-down-long"></i>
+        </span>
+        <button data-action="quick-oracle">{{localize 'GTSV.Oracle.QuickOracle'}}: {{localize
+            quickOracleOddsKey}}</button>
+        <span class="hovertext noflex hovertext-flip" data-hover="{{localize 'GTSV.Oracle.OddsUp'}}">
+            <i data-action="odds-step" data-direction="up" class="fa-solid fa-up-long"></i>
+        </span>
+    </div>
 </div>
