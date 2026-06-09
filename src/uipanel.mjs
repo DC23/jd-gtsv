@@ -27,6 +27,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
             'chaos-step': UIPanel.chaosStepHandler,
             'test-scene': UIPanel.testSceneHandler,
             'ask-oracle': UIPanel.askOracleHandler,
+            'quick-oracle': UIPanel.quickOracleHandler,
         },
     }
 
@@ -109,11 +110,19 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _prepareContext (options) {
+        const rememberOdds = game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)
+        const oddsId = rememberOdds
+            ? game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
+            : 'unsure'
+        const quickOracleOddsKey = Constants.ORACLE_ODDS.find(o => o.id === oddsId)?.key
+            ?? 'GTSV.Oracle.Odds.Unsure'
+
         const context = {
             chaosFactors: {
                 choices: Constants.CHAOS_FACTORS,
                 selected: UIPanel.#chaosFactor,
             },
+            quickOracleOddsKey,
             // textColor: UIPanel.#uiTextColor,
             // btn: {
             //     color: UIPanel.#uiButtonColor,
@@ -142,6 +151,14 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static askOracleHandler () {
         OracleDialog.ask()
+    }
+
+    static async quickOracleHandler () {
+        const rememberOdds = game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)
+        const oddsId = rememberOdds
+            ? game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
+            : 'unsure'
+        await OracleDialog.rollOracle(null, oddsId, UIPanel.#chaosFactor)
     }
 
     static async testSceneHandler (event, target) {
