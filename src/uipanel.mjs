@@ -38,6 +38,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     static #hidden = false
+    #oddsHookId = null
     refresh = foundry.utils.debounce(this.render, 100)
 
     /**
@@ -90,6 +91,21 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const select = this.element.querySelector('select[name="chaos-factor"]') // Get the chaos factor select element
         select.value = context.chaosFactors.selected // set the selected element based on the current chaos factor
         select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this)) // listen for changes
+
+        if (!this.#oddsHookId) {
+            this.#oddsHookId = Hooks.on('clientSettingChanged', (...args) => this.#onClientSettingChanged(...args))
+        }
+    }
+
+    #onClientSettingChanged (...args) {
+        const [key, value] = args
+        if (key !== `${MODULE_ID}.${SETTINGS.LAST_ODDS}`) return
+        const odds = Constants.ORACLE_ODDS.find(o => o.id === value)
+        if (!odds) return // guard against a stale/invalid setting value
+        const button = this.element?.querySelector('[data-action="quick-oracle"]')
+        if (button) {
+            button.textContent = `${game.i18n.localize('GTSV.Oracle.QuickOracle')}: ${game.i18n.localize(odds.key)}`
+        }
     }
 
     async close (options = {}) {
@@ -100,6 +116,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _onClose () {
+        Hooks.off('clientSettingChanged', this.#oddsHookId)
+        this.#oddsHookId = null
         UIPanel.#hidden = true
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
     }
