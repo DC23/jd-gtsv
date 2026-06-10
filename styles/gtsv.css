@@ -6,6 +6,11 @@
   row-gap: 6px;
 }
 
+#jd-gtsv-uipanel [data-action="quick-oracle"] {
+  height: auto;
+  padding-block: 0.4em;
+}
+
 /** Button container, for nice button spacing and alignment */
 .button-container {
   display: flex;
