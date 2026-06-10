@@ -103,14 +103,19 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     #onClientSettingChanged (...args) {
         const [key, value] = args
         if (key !== `${MODULE_ID}.${SETTINGS.LAST_ODDS}`) return
-        const odds = Constants.ORACLE_ODDS.find(o => o.id === value)
-        if (!odds) return // guard against a stale/invalid setting value
+        const oddsIndex = Constants.ORACLE_ODDS.findIndex(o => o.id === value)
+        if (oddsIndex === -1) return // guard against a stale/invalid setting value
+        const odds = Constants.ORACLE_ODDS[oddsIndex]
         const button = this.element?.querySelector('[data-action="quick-oracle"]')
         if (button) {
             button.innerHTML = `<i class="fa-sharp fa-solid fa-crystal-ball"></i> ${game.i18n.localize(
                 'GTSV.Oracle.QuickOracle'
             )}: ${game.i18n.localize(odds.key)}`
         }
+        this.element?.querySelector('[data-action="odds-step"][data-direction="down"]')
+            ?.toggleAttribute('disabled', oddsIndex === 0)
+        this.element?.querySelector('[data-action="odds-step"][data-direction="up"]')
+            ?.toggleAttribute('disabled', oddsIndex === Constants.ORACLE_ODDS.length - 1)
     }
 
     async close (options = {}) {
@@ -136,6 +141,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const oddsId = game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
         const quickOracleOddsKey =
             Constants.ORACLE_ODDS.find(o => o.id === oddsId)?.key ?? 'GTSV.Oracle.Odds.Unsure'
+        const oddsIndex = Constants.ORACLE_ODDS.findIndex(o => o.id === oddsId)
 
         const chaosIndex = Constants.CHAOS_FACTORS.findIndex(f => f.die === UIPanel.#chaosFactor)
         const context = {
@@ -146,6 +152,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
                 atMax: chaosIndex === Constants.CHAOS_FACTORS.length - 1,
             },
             quickOracleOddsKey,
+            oddsAtMin: oddsIndex === 0,
+            oddsAtMax: oddsIndex === Constants.ORACLE_ODDS.length - 1,
             // textColor: UIPanel.#uiTextColor,
             // btn: {
             //     color: UIPanel.#uiButtonColor,
@@ -195,7 +203,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     static oddsStepHandler (event, target) {
-        const direction = target.dataset.direction === 'up' ? -1 : 1
+        const direction = target.dataset.direction === 'up' ? 1 : -1
         const currentId = game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
         const currentIndex = Constants.ORACLE_ODDS.findIndex(o => o.id === currentId)
         const newIndex = Math.max(

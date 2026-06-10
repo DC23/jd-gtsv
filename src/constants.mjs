@@ -15,13 +15,13 @@ export class Constants {
     ]
 
     static ORACLE_ODDS = [
-        { id: 'certain',       key: 'GTSV.Oracle.Odds.Certain',       threshold: 2, oracleDice: '2d6kh' },
-        { id: 'very-likely',   key: 'GTSV.Oracle.Odds.VeryLikely',    threshold: 2, oracleDice: '1d6' },
-        { id: 'likely',        key: 'GTSV.Oracle.Odds.Likely',        threshold: 3, oracleDice: '1d6' },
-        { id: 'unsure',        key: 'GTSV.Oracle.Odds.Unsure',        threshold: 4, oracleDice: '1d6' },
-        { id: 'unlikely',      key: 'GTSV.Oracle.Odds.Unlikely',      threshold: 5, oracleDice: '1d6' },
-        { id: 'very-unlikely', key: 'GTSV.Oracle.Odds.VeryUnlikely',  threshold: 6, oracleDice: '1d6' },
         { id: 'impossible',    key: 'GTSV.Oracle.Odds.Impossible',    threshold: 6, oracleDice: '2d6kl' },
+        { id: 'very-unlikely', key: 'GTSV.Oracle.Odds.VeryUnlikely',  threshold: 6, oracleDice: '1d6' },
+        { id: 'unlikely',      key: 'GTSV.Oracle.Odds.Unlikely',      threshold: 5, oracleDice: '1d6' },
+        { id: 'unsure',        key: 'GTSV.Oracle.Odds.Unsure',        threshold: 4, oracleDice: '1d6' },
+        { id: 'likely',        key: 'GTSV.Oracle.Odds.Likely',        threshold: 3, oracleDice: '1d6' },
+        { id: 'very-likely',   key: 'GTSV.Oracle.Odds.VeryLikely',    threshold: 2, oracleDice: '1d6' },
+        { id: 'certain',       key: 'GTSV.Oracle.Odds.Certain',       threshold: 2, oracleDice: '2d6kh' },
     ]
 
     static CHAOS_FACTORS = [
