@@ -137,10 +137,13 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         const quickOracleOddsKey =
             Constants.ORACLE_ODDS.find(o => o.id === oddsId)?.key ?? 'GTSV.Oracle.Odds.Unsure'
 
+        const chaosIndex = Constants.CHAOS_FACTORS.findIndex(f => f.die === UIPanel.#chaosFactor)
         const context = {
             chaosFactors: {
                 choices: Constants.CHAOS_FACTORS,
                 selected: UIPanel.#chaosFactor,
+                atMin: chaosIndex === 0,
+                atMax: chaosIndex === Constants.CHAOS_FACTORS.length - 1,
             },
             quickOracleOddsKey,
             // textColor: UIPanel.#uiTextColor,
@@ -158,6 +161,11 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static chaosFactorChangedHandler (event) {
         UIPanel.#chaosFactor = event.target.value
+        const newIndex = Constants.CHAOS_FACTORS.findIndex(f => f.die === event.target.value)
+        this.element.querySelector('[data-action="chaos-step"][data-direction="down"]').disabled =
+            newIndex === 0
+        this.element.querySelector('[data-action="chaos-step"][data-direction="up"]').disabled =
+            newIndex === Constants.CHAOS_FACTORS.length - 1
     }
 
     static chaosStepHandler (event, target) {
@@ -166,6 +174,11 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         if (newDie !== null) {
             UIPanel.#chaosFactor = newDie
             this.element.querySelector('select[name="chaos-factor"]').value = newDie
+            const newIndex = Constants.CHAOS_FACTORS.findIndex(f => f.die === newDie)
+            this.element.querySelector('[data-action="chaos-step"][data-direction="down"]').disabled =
+                newIndex === 0
+            this.element.querySelector('[data-action="chaos-step"][data-direction="up"]').disabled =
+                newIndex === Constants.CHAOS_FACTORS.length - 1
         }
     }
 
