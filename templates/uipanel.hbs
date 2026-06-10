@@ -5,7 +5,7 @@
         <div class="button-container flexrow fancy-buttons">
             <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="down"
                 title="{{localize 'GTSV.ChaosDown'}}">
-                <i class="fa-solid fa-down-long"></i>
+                <i class="fa-solid fa-circle-chevron-down"></i>
             </button>
             <select name="chaos-factor">
                 {{#each chaosFactors.choices}}
@@ -14,7 +14,7 @@
             </select>
             <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="up"
                 title="{{localize 'GTSV.ChaosUp'}}">
-                <i class="fa-solid fa-up-long"></i>
+                <i class="fa-solid fa-circle-chevron-up"></i>
             </button>
         </div>
     </div>
@@ -27,13 +27,13 @@
         <div class="button-container flexrow fancy-buttons">
             <button type="button" class="gtsv-step-btn" data-action="odds-step" data-direction="down"
                 title="{{localize 'GTSV.Oracle.OddsDown'}}">
-                <i class="fa-solid fa-down-long"></i>
+                <i class="fa-solid fa-circle-chevron-down"></i>
             </button>
             <button data-action="quick-oracle"><i class="fa-sharp fa-solid fa-crystal-ball"></i> {{localize 'GTSV.Oracle.QuickOracle'}}: {{localize
                 quickOracleOddsKey}}</button>
             <button type="button" class="gtsv-step-btn" data-action="odds-step" data-direction="up"
                 title="{{localize 'GTSV.Oracle.OddsUp'}}">
-                <i class="fa-solid fa-up-long"></i>
+                <i class="fa-solid fa-circle-chevron-up"></i>
             </button>
         </div>
     </div>
