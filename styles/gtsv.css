@@ -2,6 +2,10 @@
   overflow: auto;
 }
 
+#jd-gtsv-uipanel .standard-form {
+  row-gap: 6px;
+}
+
 /** Button container, for nice button spacing and alignment */
 .button-container {
   display: flex;
@@ -65,6 +69,38 @@
 .hovertext.hovertext-flip:before {
   left: unset;
   right: 0;
+}
+
+.gtsv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gtsv-section-label {
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.gtsv-step-btn {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gtsv-divider {
+  margin: 6px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-light, #888);
+  opacity: 0.4;
 }
 
 .gtsv-notable-outcome {

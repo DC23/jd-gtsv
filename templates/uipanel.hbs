@@ -1,32 +1,41 @@
 {{log this}}
 <div class="standard-form flexcol">
-    <div class="button-container flexrow fancy-buttons">
-        <span class="hovertext noflex" data-hover="{{localize 'GTSV.ChaosDown'}}">
-            <i id="btn-gtsv-chaos-down" data-action="chaos-step" data-direction="down" class="fa-solid fa-down-long">
-            </i>
-        </span>
-
-        <select name="chaos-factor">
-            {{#each chaosFactors.choices}}
-            <option value="{{this.die}}">{{localize this.key}} ({{this.die}})</option>
-            {{/each}}
-        </select>
-
-        <span class="hovertext noflex hovertext-flip" data-hover="{{localize 'GTSV.ChaosUp'}}">
-            <i id="btn-gtsv-chaos-up" data-action="chaos-step" data-direction="up" class="fa-solid fa-up-long"> </i>
-        </span>
+    <div class="gtsv-section">
+        <div class="gtsv-section-label">{{localize 'GTSV.Oracle.ChaosLabel'}}</div>
+        <div class="button-container flexrow fancy-buttons">
+            <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="down"
+                title="{{localize 'GTSV.ChaosDown'}}">
+                <i class="fa-solid fa-down-long"></i>
+            </button>
+            <select name="chaos-factor">
+                {{#each chaosFactors.choices}}
+                <option value="{{this.die}}">{{localize this.key}} ({{this.die}})</option>
+                {{/each}}
+            </select>
+            <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="up"
+                title="{{localize 'GTSV.ChaosUp'}}">
+                <i class="fa-solid fa-up-long"></i>
+            </button>
+        </div>
     </div>
-
     <button data-action="test-scene">{{localize 'GTSV.TestScene'}}</button>
-    <button data-action="ask-oracle">{{localize 'GTSV.Oracle.AskOracle'}}</button>
-    <div class="button-container flexrow fancy-buttons">
-        <span class="hovertext noflex" data-hover="{{localize 'GTSV.Oracle.OddsDown'}}">
-            <i data-action="odds-step" data-direction="down" class="fa-solid fa-down-long"></i>
-        </span>
-        <button data-action="quick-oracle">{{localize 'GTSV.Oracle.QuickOracle'}}: {{localize
-            quickOracleOddsKey}}</button>
-        <span class="hovertext noflex hovertext-flip" data-hover="{{localize 'GTSV.Oracle.OddsUp'}}">
-            <i data-action="odds-step" data-direction="up" class="fa-solid fa-up-long"></i>
-        </span>
+
+    <hr class="gtsv-divider">
+
+    <div class="gtsv-section">
+        <div class="gtsv-section-label">{{localize 'GTSV.Oracle.SectionLabel'}}</div>
+        <div class="button-container flexrow fancy-buttons">
+            <button type="button" class="gtsv-step-btn" data-action="odds-step" data-direction="down"
+                title="{{localize 'GTSV.Oracle.OddsDown'}}">
+                <i class="fa-solid fa-down-long"></i>
+            </button>
+            <button data-action="quick-oracle">{{localize 'GTSV.Oracle.QuickOracle'}}: {{localize
+                quickOracleOddsKey}}</button>
+            <button type="button" class="gtsv-step-btn" data-action="odds-step" data-direction="up"
+                title="{{localize 'GTSV.Oracle.OddsUp'}}">
+                <i class="fa-solid fa-up-long"></i>
+            </button>
+        </div>
     </div>
+    <button data-action="ask-oracle">{{localize 'GTSV.Oracle.AskOracle'}}</button>
 </div>
