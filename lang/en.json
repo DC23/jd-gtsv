@@ -24,6 +24,7 @@
     "GTSV.Oracle.QuestionLabel": "Question",
     "GTSV.Oracle.OddsLabel": "Odds",
     "GTSV.Oracle.ChaosLabel": "Chaos Factor",
+    "GTSV.Oracle.SectionLabel": "Oracle",
     "GTSV.Oracle.Yes": "Yes",
     "GTSV.Oracle.No": "No",
     "GTSV.Oracle.Odds.Certain": "Certain",
