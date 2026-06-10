@@ -56,13 +56,13 @@ Rolling a 1 or a 2 on the chaos die adds a twist to the oracle answer. You can i
 
 | Odds | Yes if Oracle die rolls |
 | --- | --- |
-| Certain | 2+ *(roll 2d6, discard the lowest before checking for twists)* |
-| Very likely | 2+ |
-| Likely | 3+ |
-| Unsure | 4+ |
-| Unlikely | 5+ |
-| Very unlikely | 6 |
 | Impossible | 6 *(roll 2d6, discard the highest before checking for twists)* |
+| Very unlikely | 6 |
+| Unlikely | 5+ |
+| Unsure | 4+ |
+| Likely | 3+ |
+| Very likely | 2+ |
+| Certain | 2+ *(roll 2d6, discard the lowest before checking for twists)* |
 
 ### Twists
 

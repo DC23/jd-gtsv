@@ -4,7 +4,7 @@
         <div class="gtsv-section-label">{{localize 'GTSV.Oracle.ChaosLabel'}}</div>
         <div class="button-container flexrow fancy-buttons">
             <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="down"
-                title="{{localize 'GTSV.ChaosDown'}}">
+                title="{{localize 'GTSV.ChaosDown'}}" {{#if chaosFactors.atMin}}disabled{{/if}}>
                 <i class="fa-solid fa-circle-chevron-down"></i>
             </button>
             <select name="chaos-factor">
@@ -13,7 +13,7 @@
                 {{/each}}
             </select>
             <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="up"
-                title="{{localize 'GTSV.ChaosUp'}}">
+                title="{{localize 'GTSV.ChaosUp'}}" {{#if chaosFactors.atMax}}disabled{{/if}}>
                 <i class="fa-solid fa-circle-chevron-up"></i>
             </button>
         </div>
@@ -26,13 +26,13 @@
         <div class="gtsv-section-label">{{localize 'GTSV.Oracle.SectionLabel'}}</div>
         <div class="button-container flexrow fancy-buttons">
             <button type="button" class="gtsv-step-btn" data-action="odds-step" data-direction="down"
-                title="{{localize 'GTSV.Oracle.OddsDown'}}">
+                title="{{localize 'GTSV.Oracle.OddsDown'}}" {{#if oddsAtMin}}disabled{{/if}}>
                 <i class="fa-solid fa-circle-chevron-down"></i>
             </button>
             <button data-action="quick-oracle"><i class="fa-sharp fa-solid fa-crystal-ball"></i> {{localize 'GTSV.Oracle.QuickOracle'}}: {{localize
                 quickOracleOddsKey}}</button>
             <button type="button" class="gtsv-step-btn" data-action="odds-step" data-direction="up"
-                title="{{localize 'GTSV.Oracle.OddsUp'}}">
+                title="{{localize 'GTSV.Oracle.OddsUp'}}" {{#if oddsAtMax}}disabled{{/if}}>
                 <i class="fa-solid fa-circle-chevron-up"></i>
             </button>
         </div>
