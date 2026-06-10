@@ -107,7 +107,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!odds) return // guard against a stale/invalid setting value
         const button = this.element?.querySelector('[data-action="quick-oracle"]')
         if (button) {
-            button.textContent = `${game.i18n.localize(
+            button.innerHTML = `<i class="fa-sharp fa-solid fa-crystal-ball"></i> ${game.i18n.localize(
                 'GTSV.Oracle.QuickOracle'
             )}: ${game.i18n.localize(odds.key)}`
         }
