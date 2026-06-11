@@ -58,7 +58,7 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         await OracleDialog.rollOracle(question, oddsId, chaosDie)
     }
 
-    static async rollOracle (question, oddsId, chaosDie) {
+    static async rollOracle (question, oddsId, chaosDie, titleKey = 'GTSV.Oracle.AskOracle') {
         const odds = Constants.ORACLE_ODDS.find(o => o.id === oddsId)
 
         const roll = new Roll(`${odds.oracleDice} + 1${chaosDie}`)
@@ -72,17 +72,15 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
             odds.threshold
         )
 
-        const twistClass = twist || isRandomEvent ? 'gtsv-notable-outcome' : ''
+        const chaosFactor = Constants.CHAOS_FACTORS.find(c => c.die === chaosDie)
+
+        const answerText = game.i18n.localize(isYes ? 'GTSV.Oracle.Yes' : 'GTSV.Oracle.No')
+        const twistText = twist ? game.i18n.localize(twist) : null
+        const result = twistText ? `${answerText}, ${twistText}` : answerText
 
         const flavor = await foundry.applications.handlebars.renderTemplate(
             `modules/${MODULE_ID}/templates/oracle-chat.hbs`,
-            {
-                question,
-                answer: isYes ? 'GTSV.Oracle.Yes' : 'GTSV.Oracle.No',
-                twist,
-                isRandomEvent,
-                twistClass,
-            }
+            { title: titleKey, question, odds: odds.key, chaos: chaosFactor.key, result, isRandomEvent }
         )
 
         await roll.toMessage({ flavor, rollMode: game.settings.get('core', 'rollMode') })

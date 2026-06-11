@@ -34,8 +34,8 @@
     "GTSV.Oracle.Odds.Unlikely": "Unlikely",
     "GTSV.Oracle.Odds.VeryUnlikely": "Very Unlikely",
     "GTSV.Oracle.Odds.Impossible": "Impossible",
-    "GTSV.Oracle.Twist.And": "And… / Extreme",
-    "GTSV.Oracle.Twist.But": "But… / Extreme",
+    "GTSV.Oracle.Twist.And": "and… / extreme",
+    "GTSV.Oracle.Twist.But": "but… / extreme",
     "GTSV.Oracle.Twist.RandomEvent": "Random Event!",
     "GTSV.Settings.RememberLastOdds.Name": "Remember Last Odds",
     "GTSV.Settings.RememberLastOdds.Hint": "When enabled, the Ask the Oracle dialog remembers the selected odds"
