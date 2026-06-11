@@ -112,3 +112,31 @@
   font-weight: 700;
   font-size: 1.1em;
 }
+
+.gtsv-oracle-title {
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+  margin: 0 0 4px 0;
+}
+
+.gtsv-oracle-question {
+  font-size: 1.2em;
+  opacity: 0.9;
+  margin: 0 0 4px 0;
+}
+
+.gtsv-oracle-odds {
+  font-size: 0.875em;
+  opacity: 0.65;
+  margin: 0 0 6px 0;
+}
+
+.gtsv-oracle-result {
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4px 0;
+}
