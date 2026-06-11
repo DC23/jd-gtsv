@@ -94,15 +94,15 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         select.addEventListener('change', UIPanel.chaosFactorChangedHandler.bind(this)) // listen for changes
 
         if (!this.#oddsHookId) {
-            this.#oddsHookId = Hooks.on('clientSettingChanged', (...args) =>
-                this.#onClientSettingChanged(...args)
+            this.#oddsHookId = Hooks.on('updateSetting', (setting) =>
+                this.#onOddsSettingChanged(setting)
             )
         }
     }
 
-    #onClientSettingChanged (...args) {
-        const [key, value] = args
-        if (key !== `${MODULE_ID}.${SETTINGS.LAST_ODDS}`) return
+    #onOddsSettingChanged (setting) {
+        if (setting.key !== `${MODULE_ID}.${SETTINGS.LAST_ODDS}`) return
+        const value = game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
         const oddsIndex = Constants.ORACLE_ODDS.findIndex(o => o.id === value)
         if (oddsIndex === -1) return // guard against a stale/invalid setting value
         const odds = Constants.ORACLE_ODDS[oddsIndex]
@@ -126,7 +126,7 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _onClose () {
-        Hooks.off('clientSettingChanged', this.#oddsHookId)
+        Hooks.off('updateSetting', this.#oddsHookId)
         this.#oddsHookId = null
         UIPanel.#hidden = true
         game.settings.set(MODULE_ID, SETTINGS.FLOATING_UI_PANEL_POSITION, this.position)
