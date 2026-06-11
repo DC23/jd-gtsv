@@ -4,7 +4,6 @@ export const MODULE_ID = 'jd-gtsv'
 export const SETTINGS = {
     FLOATING_UI_PANEL_POSITION: 'uiPanelPosition',
     CURRENT_CHAOS_FACTOR: 'currentChaosFactor',
-    REMEMBER_LAST_ODDS: 'rememberLastOdds',
     LAST_ODDS: 'lastOdds',
 }
 
@@ -21,16 +20,6 @@ export function registerSettings () {
         type: String,
         default: Constants.CHAOS_FACTORS[2].die,
         requiresReload: false,
-    })
-
-    game.settings.register(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS, {
-        scope: 'client',
-        config: true,
-        type: Boolean,
-        default: false,
-        requiresReload: false,
-        name: 'GTSV.Settings.RememberLastOdds.Name',
-        hint: 'GTSV.Settings.RememberLastOdds.Hint',
     })
 
     game.settings.register(MODULE_ID, SETTINGS.LAST_ODDS, {
