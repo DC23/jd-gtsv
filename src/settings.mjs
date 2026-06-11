@@ -23,7 +23,7 @@ export function registerSettings () {
     })
 
     game.settings.register(MODULE_ID, SETTINGS.LAST_ODDS, {
-        scope: 'client',
+        scope: 'world',
         config: false,
         type: String,
         default: 'unsure',
