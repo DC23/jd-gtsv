@@ -9,7 +9,7 @@
             </button>
             <select name="chaos-factor">
                 {{#each chaosFactors.choices}}
-                <option value="{{this.die}}">{{localize this.key}} ({{this.die}})</option>
+                <option value="{{this.die}}">{{localize this.key}}</option>
                 {{/each}}
             </select>
             <button type="button" class="gtsv-step-btn" data-action="chaos-step" data-direction="up"
