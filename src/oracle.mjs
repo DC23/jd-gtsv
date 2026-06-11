@@ -33,10 +33,7 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _prepareContext (options) {
-        const rememberOdds = game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)
-        const currentOdds = rememberOdds
-            ? game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
-            : 'unsure'
+        const currentOdds = game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS)
 
         return {
             odds: {
@@ -52,9 +49,7 @@ export class OracleDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static async #onSubmit (event, form, formData) {
         const { question, oddsId, chaosDie } = formData.object
-        if (game.settings.get(MODULE_ID, SETTINGS.REMEMBER_LAST_ODDS)) {
-            game.settings.set(MODULE_ID, SETTINGS.LAST_ODDS, oddsId)
-        }
+        game.settings.set(MODULE_ID, SETTINGS.LAST_ODDS, oddsId)
         await OracleDialog.rollOracle(question, oddsId, chaosDie)
     }
 
