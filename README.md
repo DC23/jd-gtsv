@@ -18,7 +18,26 @@ However, in the original MCSV, modifiers or complications occur far too frequent
 
 In the spirit of Morning Coffee Solo Variations, I have called this mashup the *Ginger Tea Solo Variations* (GTSV), since I was drinking ginger tea at least some of the time while working on it.
 
-## Chaos Factor
+## Module Features
+
+- Chaos factor, with up/down increment buttons and list selection
+- Scene expectation tests, with interrupt and altered scenes based on current chaos factor
+- Ask the Oracle dialog
+- Quick Oracle: a full oracle question using the current odds and chaos factor with a single button click
+- Full automation of oracle results, generation of twists and random events using the GTSV system
+- Chaos factor and Oracle odds are saved automatically
+- Full support of native Foundry light and dark themes
+- Hotkey to show and hide the GTSV UI window
+
+| Module UI | Ask the Oracle | Result |
+| --- | --- | --- |
+| ![GTSV UI](./images/gtsv-ui.png) | ![Ask the Oracle](./images/ask-dialog.png) | ![Oracle Result](./images/oracle-result.png) |
+
+---
+
+## The GTSV Oracle System
+
+### Chaos Factor
 
 High chaos is represented by a smaller chaos die. Low chaos by a larger die. When changing the Chaos Factor, the die is moved one step at a time.
 
@@ -36,7 +55,7 @@ If you are just starting an adventure and don't know what the chaos level is, th
 | Abject Chaos | d5 |
 | Plaything of the Gods | d4 |
 
-## Scene Setup
+### Scene Setup
 
 After setting up your scene, roll the chaos die against this table to test your expectations. This table generates interrupt, altered, and unmodified scenes with comparable frequencies to the [Mythic system](https://www.wordmillgames.com/page/mythic-gme.html). Not identical, but close enough to replicate the feel in my games.
 
@@ -46,13 +65,13 @@ After setting up your scene, roll the chaos die against this table to test your 
 | 3–4 | Altered |
 | 5+ | As expected |
 
-## Oracle
+### Ask the Oracle
 
 The Yes/No oracle is used to answer questions about your RPG world, the characters, and events within it. Unlike Mythic, the odds of yes or no are not altered by the chaos factor.
 
 Rolling a 1 or a 2 on the chaos die adds a twist to the oracle answer. You can interpret that twist however you like. If you call it *Extreme*, you will get results very close to the Mythic system. Or, you can split the twists in two as suggested in the twists table. It's up to you.
 
-### Outcome (1d6)
+#### Outcome (1d6)
 
 | Odds | Yes if Oracle die rolls |
 | --- | --- |
@@ -64,7 +83,7 @@ Rolling a 1 or a 2 on the chaos die adds a twist to the oracle answer. You can i
 | Very likely | 2+ |
 | Certain | 2+ *(roll 2d6, discard the lowest before checking for twists)* |
 
-### Twists
+#### Twists
 
 | Chaos die | Result |
 | --- | --- |
