@@ -198,7 +198,8 @@ export class UIPanel extends HandlebarsApplicationMixin(ApplicationV2) {
         await OracleDialog.rollOracle(
             null,
             game.settings.get(MODULE_ID, SETTINGS.LAST_ODDS),
-            UIPanel.#chaosFactor
+            UIPanel.#chaosFactor,
+            'GTSV.Oracle.QuickOracle'
         )
     }
 
